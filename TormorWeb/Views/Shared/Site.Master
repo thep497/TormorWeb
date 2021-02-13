@@ -1,0 +1,78 @@
+<%@ Master Language="C#" Inherits="System.Web.Mvc.ViewMasterPage" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+<title><asp:ContentPlaceHolder ID="TitleContent" runat="server" /></title>
+    <%--<link href="../../Content/Site.css" rel="stylesheet" type="text/css" />--%>
+    <%= Html.JavascriptTag("jquery-1.5.1") %>
+    <%= Html.JavascriptTag("3rdParty/date.f-0.5.0") %>
+    <%= Html.Telerik().StyleSheetRegistrar()
+                      .DefaultGroup(group => group
+                      .Add("telerik.common.css")
+                      .Add("telerik.outlook.css")
+                      .Add("site.css")
+                      .Combined(true)
+                      .Compress(true)) %>
+    <asp:ContentPlaceHolder ID="ScriptContent" runat="server" />
+</head>
+
+<body>
+    <div class="page">
+        <div id="header"><table id="headertable">
+            <tr>
+            <td><%= Html.ImageRouteLink("~/Content/Images/IMLogoSmall.jpg", "", "http://samutsakhon.immigration.go.th", new { target = "_blank" }, new { border = "0" })%></td>  
+            <td><%: Resources.Messages.WebTitle %><br /><div id="secondheader">&nbsp <%: ViewData["PageTitle"] %></div></td>
+            </tr>
+        </table></div>
+        <div id="logindisplay"><% Html.RenderPartial("LogOnUserControl"); %></div> 
+        <div id="infopanel">
+            <%= TempData.ShowInfo() %>
+            <%= TempData.ShowWarning() %>
+            <%= TempData.ShowError() %>
+        </div>
+        <div id="left"><% Html.RenderPartial("MainMenu"); %></div>
+        <div id="toolbarpanel">
+            <% Html.RenderPartial("ToolbarControl"); %>
+        </div>
+        <div id="mainscreen">
+            <% Html.RenderPartial("WarnEssentialSetting"); %>
+            <asp:ContentPlaceHolder ID="MainContent" runat="server" />
+        </div>
+        <div class="datastatus">** Modified **</div>
+        <div id="footer">
+            <div id="footertext"><%: Resources.Messages.CopyrightDef2 %><br /><%= Resources.Messages.CopyrightString %></div>
+        </div>
+    </div>
+<%= Html.Telerik().ScriptRegistrar()
+    .jQuery(false)
+    .Globalization(true)
+    .DefaultGroup(group => group
+            .Combined(true)
+            .Compress(true)
+    )
+%>
+<%= Html.JavascriptTag("MicrosoftAjax",true)  %>
+<%= Html.JavascriptTag("MicrosoftMvcAjax", true)%>
+<%= Html.JavascriptTag("3rdParty/jquery.form",true) %>
+<%= Html.JavascriptTag("3rdParty/jquery.blockUI",true) %>
+<%= Html.JavascriptTag("3rdParty/AjaxLoadedContentScriptFix",true) %>
+<%= Html.JavascriptTag("nns/NNSSiteMaster",true)  %>
+<%= Html.JavascriptTag("nns/VisaLib",true)  %>
+<%= Html.JavascriptTag("nns/AlienEditLib",true)  %>
+
+<script language="javascript" type="text/javascript">
+//th20110805 พวกคำนวณอายุ ต้องอยู่ตรงนี้ NC5408002
+var __calculateAge = '<%= Url.Action("_calculateAge","Alien",new {area = "AlienArea"}) %>';
+var __calculateDateOfBirth = '<%= Url.Action("_calculateDateOfBirth","Alien",new {area = "AlienArea"}) %>';
+
+var glo_ConfirmDelete = '<%= Resources.Messages.JS_ConfirmGiveUp %>';
+var glo_ConfirmSaveChange = '<%= Resources.Messages.JS_Alert_ConfirmExitWithoutSave %>';
+
+var glo_KeepSessionUrl = '<%= Url.Content("~/Helpers/KeepSessionAlive.ashx") %>';
+var glo_DateFormat = '<%= Globals.DateFormat %>';
+var glo_ModalDetailUpdateOK = '<%= Globals.ModalDetailUpdateOK %>';
+var glo_GridHeight = '<%= Globals.MainScreenHeight %>';
+var glo_BusyImage = '<%= Url.Content("~/Content/Images/loading.gif") %>';
+</script>
+</body>
+</html>

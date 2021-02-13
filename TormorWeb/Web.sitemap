@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<siteMap>
+
+  <siteMapNode title="Home" controller="Home" action="Index">
+
+    <siteMapNode area="" controller="Home" action="Index" title="หน้าหลัก"/>
+    <siteMapNode title="ค้นหาข้อมูล">
+      <siteMapNode area="Search" controller="Search" action="Index" title="แสดงข้อมูลคนต่างด้าว" />
+      <siteMapNode area="ConveyanceArea" controller="ConveyanceInOut" action="Index" title="แสดงข้อมูลเรือเข้า/ออก"/>
+    </siteMapNode>
+    <siteMapNode title="ข้อมูลบุคคลต่างด้าว">
+      <siteMapNode area="Visa" controller="Visa" action="Insert" title="ขออยู่ต่อ (ต่อ Visa)" />
+      <siteMapNode area="Visa" controller="ReEntry" action="Insert" title="Re-Entry"/>
+      <siteMapNode area="Visa" controller="Endorse" action="Insert" title="สลักหลังถิ่นที่อยู่"/>
+      <siteMapNode area="Visa" controller="Stay" action="Insert" title="รายงานตัว 90 วัน"/>
+    </siteMapNode>
+    <siteMapNode title="ข้อมูลเรือ">
+      <siteMapNode area="ConveyanceArea" controller="ConveyanceInOut" action="Insert" title="รายการเรือเข้า/ออก"/>
+      <siteMapNode area="ConveyanceArea" controller="AddRemoveCrew" action="IncreaseCrew" title="เพิ่มคนประจำเรือ"/>
+      <siteMapNode area="ConveyanceArea" controller="AddRemoveCrew" action="DecreaseCrew" title="ลดคนประจำเรือ"/>
+    </siteMapNode>
+    <siteMapNode title="System">
+      <siteMapNode area="Reference" controller="Reference" action="Index" title="กำหนดค่ามาตรฐาน"/>
+      <siteMapNode area="UserAdministration" controller="UserAdministration" action="Index" title="เพิ่ม-ลบผู้ใช้งาน" />
+      <siteMapNode area="" controller="Account" action="UsersProfiles" title="แก้ไขข้อมูลส่วนตัว" />
+      <siteMapNode area="" controller="Account" action="ChangePassword" title="เปลี่ยนรหัสผ่าน" />
+      <siteMapNode title="ติดต่อ Neo-Net Soft" url="mailto:sales@neo-netsoft.com" />
+    </siteMapNode>
+    <!--<siteMapNode area="Search" controller="Search" action="Index" title="ไปหน้าหลัก (2)" />-->
+  </siteMapNode>
+</siteMap>

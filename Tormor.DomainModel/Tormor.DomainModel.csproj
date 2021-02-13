@@ -1,0 +1,132 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{A17E5FF7-0400-427E-A28A-5865E1254148}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Tormor.DomainModel</RootNamespace>
+    <AssemblyName>Tormor.DomainModel</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Abstract\ISearchRepository.cs" />
+    <Compile Include="Abstract\IVisaRepository.cs" />
+    <Compile Include="Concrete\EFAddRemoveCrewRepository.cs" />
+    <Compile Include="Concrete\EFCrewRepository.cs" />
+    <Compile Include="Concrete\EFConveyanceRepository.cs" />
+    <Compile Include="Concrete\EFConveyanceInOutRepository.cs" />
+    <Compile Include="Concrete\EFAlienTransactionRepository.cs" />
+    <Compile Include="Concrete\EFEndorseStampRepository.cs" />
+    <Compile Include="Concrete\EFEndorseRepository.cs" />
+    <Compile Include="Concrete\EFReEntryRepository.cs" />
+    <Compile Include="Concrete\EFStayRepository.cs" />
+    <Compile Include="Concrete\EFReferenceRepository.cs" />
+    <Compile Include="Concrete\EFVisaRepository.cs" />
+    <Compile Include="Concrete\EFAlienRepository.cs" />
+    <Compile Include="Abstract\IAlienRepository.cs" />
+    <Compile Include="Abstract\IReferenceRepository.cs" />
+    <Compile Include="Abstract\IStayRepository.cs" />
+    <Compile Include="Abstract\IReEntryRepository.cs" />
+    <Compile Include="Abstract\IEndorseRepository.cs" />
+    <Compile Include="Abstract\IEndorseStampRepository.cs" />
+    <Compile Include="Abstract\IAlienTransactionRepository.cs" />
+    <Compile Include="Abstract\IConveyanceInOutRepository.cs" />
+    <Compile Include="Abstract\IConveyanceRepository.cs" />
+    <Compile Include="Abstract\ICrewRepository.cs" />
+    <Compile Include="Abstract\IAddRemoveCrewRepository.cs" />
+    <Compile Include="Entities\Alien.cs" />
+    <Compile Include="Entities\AlienSearchInfo.cs" />
+    <Compile Include="Entities\ComplexType.cs" />
+    <Compile Include="Entities\AlienTransaction.cs" />
+    <Compile Include="Entities\Conveyance.cs" />
+    <Compile Include="Entities\ConveyanceInOut.cs" />
+    <Compile Include="Entities\AddRemoveCrew.cs" />
+    <Compile Include="Entities\ConveyanceSearchInfo.cs" />
+    <Compile Include="Entities\Crew.cs" />
+    <Compile Include="Entities\Endorse.cs" />
+    <Compile Include="Entities\ReEntry.cs" />
+    <Compile Include="Entities\SearchInfoBase.cs" />
+    <Compile Include="Entities\Stay.cs" />
+    <Compile Include="Entities\Reference.cs" />
+    <Compile Include="Entities\Visa.cs" />
+    <Compile Include="Helpers\ModelConst.cs" />
+    <Compile Include="Helpers\ModelValidations.cs" />
+    <Compile Include="Helpers\UpdateHelpers.cs" />
+    <Compile Include="NeoIMOSK.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NeoIMOSK.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+    <EntityDeploy Include="NeoIMOSK.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>NeoIMOSK.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="NeoIMOSK.edmx.sql" />
+    <Content Include="NeoIMOSK.edmx_add.sql" />
+    <Content Include="SQLUpDB\20110407เพิ่ม Field ID_Seaman.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\NNS.GeneralHelpers\NNS.GeneralHelpers.csproj">
+      <Project>{01E5509B-CE9D-47E2-9689-510923F2755A}</Project>
+      <Name>NNS.GeneralHelpers</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

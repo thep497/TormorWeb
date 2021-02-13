@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- 
+  Microsoft Visual Studio 2010 Web Deployment Project 
+  http://go.microsoft.com/fwlink/?LinkID=104956
+
+-->
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>10.0.30319</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{0974F201-BA42-45F9-9A63-46B4CB33DF28}</ProjectGuid>
+    <SourceWebPhysicalPath>..\TormorWeb</SourceWebPhysicalPath>
+    <SourceWebProject>{03F2F673-F6C6-4333-9498-35BAD3EF18BC}|TormorWeb\Tormor.Web.csproj</SourceWebProject>
+    <SourceWebVirtualPath>/Tormor.Web.csproj</SourceWebVirtualPath>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>.\Debug</OutputPath>
+    <EnableUpdateable>true</EnableUpdateable>
+    <UseMerge>true</UseMerge>
+    <SingleAssemblyName>Tormor.Web.csproj_deploy</SingleAssemblyName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>false</DebugSymbols>
+    <OutputPath>.\Release</OutputPath>
+    <EnableUpdateable>false</EnableUpdateable>
+    <UseMerge>true</UseMerge>
+    <SingleAssemblyName>
+    </SingleAssemblyName>
+    <UseFixedNames>false</UseFixedNames>
+    <ContentAssemblyName>Tormor.ViewEngine</ContentAssemblyName>
+    <DeleteAppDataFolder>true</DeleteAppDataFolder>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TormorWeb\Tormor.Web.csproj">
+      <Project>{03F2F673-F6C6-4333-9498-35BAD3EF18BC}</Project>
+      <Name>Tormor.Web</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
+    <AssemblyAttributes Include="AssemblyFileVersion">
+      <Value>1.0.0.0</Value>
+    </AssemblyAttributes>
+    <AssemblyAttributes Include="AssemblyVersion">
+      <Value>1.0.0.0</Value>
+    </AssemblyAttributes>
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\WebDeployment\v10.0\Microsoft.WebDeployment.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.WebDeployment.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="BeforeMerge">
+  </Target>
+  <Target Name="AfterMerge">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

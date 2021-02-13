@@ -1,0 +1,96 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tormor.Web", "TormorWeb\Tormor.Web.csproj", "{03F2F673-F6C6-4333-9498-35BAD3EF18BC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tormor.Web.Tests", "TormorWeb.Tests\Tormor.Web.Tests.csproj", "{CC4FC2EC-67C9-4042-8187-CE0E2F6C1A4B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NNS.MVCHelpers", "NNSMVCHelpers\NNS.MVCHelpers.csproj", "{4491B28C-E688-406E-B7AC-4266611E2D9E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tormor.DomainModel", "Tormor.DomainModel\Tormor.DomainModel.csproj", "{A17E5FF7-0400-427E-A28A-5865E1254148}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NNS.CustomEvents", "NNSCustomEvents\NNS.CustomEvents.csproj", "{7EA9FCFE-8672-415A-A69C-C3A916938807}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NNS.GeneralHelpers", "NNS.GeneralHelpers\NNS.GeneralHelpers.csproj", "{01E5509B-CE9D-47E2-9689-510923F2755A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tormor.Web.Reports", "Tormor.Web.Reports\Tormor.Web.Reports.csproj", "{B7FA8D84-A744-43A7-9A1E-F86008FBE37C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XtraReportDesigner", "XtraReportDesigner\XtraReportDesigner.csproj", "{61B4187C-D354-4BBC-BFA8-DABAC8C909C0}"
+EndProject
+Project("{2CFEAB61-6A3B-4EB8-B523-560B4BEEF521}") = "Tormor.Web.csproj_deploy", "Tormor.Web.csproj_deploy\Tormor.Web.csproj_deploy.wdproj", "{0974F201-BA42-45F9-9A63-46B4CB33DF28}"
+EndProject
+Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 10
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = http://nnscamera.hopto.org:8080/tfs/defaultcollection
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = NNS.GeneralHelpers\\NNS.GeneralHelpers.csproj
+		SccProjectName1 = NNS.GeneralHelpers
+		SccLocalPath1 = NNS.GeneralHelpers
+		SccProjectUniqueName2 = NNSCustomEvents\\NNS.CustomEvents.csproj
+		SccProjectName2 = NNSCustomEvents
+		SccLocalPath2 = NNSCustomEvents
+		SccProjectUniqueName3 = NNSMVCHelpers\\NNS.MVCHelpers.csproj
+		SccProjectName3 = NNSMVCHelpers
+		SccLocalPath3 = NNSMVCHelpers
+		SccProjectUniqueName4 = Tormor.DomainModel\\Tormor.DomainModel.csproj
+		SccProjectName4 = Tormor.DomainModel
+		SccLocalPath4 = Tormor.DomainModel
+		SccProjectUniqueName5 = Tormor.Web.Reports\\Tormor.Web.Reports.csproj
+		SccProjectName5 = Tormor.Web.Reports
+		SccLocalPath5 = Tormor.Web.Reports
+		SccProjectUniqueName6 = TormorWeb.Tests\\Tormor.Web.Tests.csproj
+		SccProjectName6 = TormorWeb.Tests
+		SccLocalPath6 = TormorWeb.Tests
+		SccProjectUniqueName7 = TormorWeb\\Tormor.Web.csproj
+		SccProjectName7 = TormorWeb
+		SccLocalPath7 = TormorWeb
+		SccProjectUniqueName8 = XtraReportDesigner\\XtraReportDesigner.csproj
+		SccProjectName8 = XtraReportDesigner
+		SccLocalPath8 = XtraReportDesigner
+		SccProjectUniqueName9 = Tormor.Web.csproj_deploy\\Tormor.Web.csproj_deploy.wdproj
+		SccProjectName9 = Tormor.Web.csproj_deploy
+		SccLocalPath9 = Tormor.Web.csproj_deploy
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{03F2F673-F6C6-4333-9498-35BAD3EF18BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{03F2F673-F6C6-4333-9498-35BAD3EF18BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{03F2F673-F6C6-4333-9498-35BAD3EF18BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{03F2F673-F6C6-4333-9498-35BAD3EF18BC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CC4FC2EC-67C9-4042-8187-CE0E2F6C1A4B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CC4FC2EC-67C9-4042-8187-CE0E2F6C1A4B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4491B28C-E688-406E-B7AC-4266611E2D9E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4491B28C-E688-406E-B7AC-4266611E2D9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4491B28C-E688-406E-B7AC-4266611E2D9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4491B28C-E688-406E-B7AC-4266611E2D9E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A17E5FF7-0400-427E-A28A-5865E1254148}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A17E5FF7-0400-427E-A28A-5865E1254148}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A17E5FF7-0400-427E-A28A-5865E1254148}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A17E5FF7-0400-427E-A28A-5865E1254148}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7EA9FCFE-8672-415A-A69C-C3A916938807}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7EA9FCFE-8672-415A-A69C-C3A916938807}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7EA9FCFE-8672-415A-A69C-C3A916938807}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7EA9FCFE-8672-415A-A69C-C3A916938807}.Release|Any CPU.Build.0 = Release|Any CPU
+		{01E5509B-CE9D-47E2-9689-510923F2755A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{01E5509B-CE9D-47E2-9689-510923F2755A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{01E5509B-CE9D-47E2-9689-510923F2755A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{01E5509B-CE9D-47E2-9689-510923F2755A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B7FA8D84-A744-43A7-9A1E-F86008FBE37C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B7FA8D84-A744-43A7-9A1E-F86008FBE37C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B7FA8D84-A744-43A7-9A1E-F86008FBE37C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B7FA8D84-A744-43A7-9A1E-F86008FBE37C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{61B4187C-D354-4BBC-BFA8-DABAC8C909C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{61B4187C-D354-4BBC-BFA8-DABAC8C909C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0974F201-BA42-45F9-9A63-46B4CB33DF28}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0974F201-BA42-45F9-9A63-46B4CB33DF28}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0974F201-BA42-45F9-9A63-46B4CB33DF28}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

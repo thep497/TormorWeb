@@ -1,0 +1,817 @@
+﻿/*----------------------------------------------------------
+The base color for this template is #5c87b2. If you'd like
+to use a different color start by replacing all instances of
+#5c87b2 with your new color.
+----------------------------------------------------------*/
+* {
+   margin: 0;
+   padding:0;
+}
+
+/* PRIMARY LAYOUT ELEMENTS   
+----------------------------------------------------------*/
+html {
+    height:100%; 
+    max-height:100%; 
+    padding:0;
+    margin:0; 
+    border:0; 
+    background-color : #eee; 
+    /* hide overflow:hidden from IE5/Mac */ 
+    /* \*/ 
+    overflow: hidden; 
+    /* */ 
+}
+
+body 
+{
+    height:100%; 
+    max-height:100%; 
+    background-color: #DDD; /*#5c87b2;*/
+    overflow:hidden; 
+    padding:0; 
+    margin:0; 
+    border:0;
+    font-family: Tahoma, Microsoft Sans Serif, MS Sans Serif, Verdana, Arial, Serif;
+    font-size: 12px;
+}
+
+#mainscreen 
+{
+    overflow:auto; 
+    position:absolute; 
+/*    z-index:3;  */
+    top:83px; /* 83px = 55px + 28px (ของ header และ toolbar) */
+    bottom:54px; /* 42px */
+    left:185px; 
+    right:0; 
+    display:block; 
+    background-color: #F0F9FF; /*#eee;*/
+}
+/*
+* html #mainscreen 
+{
+    top:0; left:0; right:0; bottom:0; 
+    height:100%; 
+    max-height:100%; 
+    width:100%; 
+    overflow:auto; 
+    position:absolute; 
+    z-index:3; 
+*/
+/*    border-top:83px solid #fff; */ /* 83px = 55px + 28px (ของ header และ toolbar) */
+/*    border-bottom:42px solid #fff; */ /* 42px */
+/*    border-left:185px solid #fff; */
+/*} */
+
+/* toolbarsubmenu */
+#toolbarpanel
+{
+    overflow:visible; 
+    position:absolute; 
+/*    z-index:3; */
+    top:55px; 
+    min-height:28px; 
+    left:185px; 
+    right:0; 
+    display:block; 
+    background-color: #F0F9FF; /*#eee;*/
+}
+
+#header 
+{
+    position:absolute; 
+    margin:0; 
+    top:0; 
+    left:0; 
+    display:block; 
+    width:100%; 
+    height:55px; 
+    background-image: url(images/HeaderSlice.gif); 
+    z-index:5; 
+    overflow:hidden; 
+    font-size: 18px;
+    font-weight: bold;
+    color: #0022FF;
+}
+
+table#headertable 
+{
+    padding: 0px;
+    border: 0;
+}
+table#headertable td
+{
+    padding : 2px 0px 0px 2px;
+    border: 0;
+    color: #E1E9F7;
+    text-decoration:none;
+}
+#secondheader
+{
+    color: Black; /*#00868B;*/
+    font-size : 0.7em;
+    font-style:normal;
+    text-decoration:none;
+}
+
+#footer 
+{
+    position:absolute; 
+    margin:0; 
+    bottom:0; 
+    left:0; 
+    display:block; 
+    width:100%; 
+    height:42px; 
+    font-size:1em; 
+    z-index:5; 
+    overflow:hidden; 
+    background-image: url(images/FooterSlice.gif);
+}
+#footertext
+{
+   text-align: center;
+   padding-top: 8px;            
+   font-size: 1em;
+}
+
+#footertext a:link
+{
+    color: white;
+    text-decoration: none;
+}
+
+#footertext a:visited
+{
+    color: white;
+    text-decoration: none;
+}
+
+#footertext a:hover
+{
+    color: #FFD700;
+    text-decoration: none;
+}
+
+#left 
+{
+    position:absolute; 
+    left:0; 
+    top:55px; 
+    bottom:42px; 
+    width:185px; 
+    overflow:auto; 
+    font-size:1.2em; 
+    z-index:4; 
+    background-color: #7DA5E0;
+}
+/*
+* html #left 
+{
+    height:100%; 
+    top:0; 
+    bottom:0; 
+    border-top:55px solid #fff; 
+    border-bottom:42px solid #fff;  
+    color:#fff;
+}
+*/
+
+#logindisplay
+{
+    position: absolute;
+    text-align:right;
+    top: 10px;
+    right: 10px;
+    width: 350px;
+    height: 40px;
+    padding: 2px 2px 2px 2px;    
+    z-index: 6;
+    font-size:1.1em;
+    margin: 1px 1px 1px 1px;
+}
+
+#logindisplay a:link
+{
+    color: white;
+    text-decoration: none;
+}
+
+#logindisplay a:visited
+{
+    color: white;
+    text-decoration: none;
+}
+
+#logindisplay a:hover
+{
+    color: #FFD700;
+    text-decoration: none;
+}
+
+/* ค่า properties ของ element ต่าง ๆ 
+-------------------------------------*/
+a:link
+{
+    color: #159e23;
+    text-decoration: none;
+    /*
+    color: #034af3;
+    text-decoration: underline; */
+}
+a:visited
+{
+    color: #057e13;
+    text-decoration: none;
+}
+a:hover
+{
+    color: #15Be23;
+    text-decoration: none;
+}
+a:active
+{
+    color: #159e23;
+}
+
+p, ul
+{
+    margin-bottom: 20px;
+    line-height: 1.6em;
+}
+
+em
+{
+    color: #228B22;
+    font-size: 1.2em;
+}
+/* HEADINGS   
+----------------------------------------------------------*/
+h1, h2, h3, h4, h5, h6
+{
+    font-size: 1.5em;
+    color: #000;
+    font-family: Tahoma, Arial, Helvetica, sans-serif;
+}
+
+h1
+{
+    font-size: 2em;
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+h2
+{
+    padding: 0 0 10px 0;
+}
+h3
+{
+    font-size: 1.2em;
+}
+h4
+{
+    font-size: 1.1em;
+}
+h5, h6
+{
+    font-size: 1em;
+}
+
+/* this rule styles <h2> tags that are the 
+first child of the left and right table columns */
+.rightColumn > h1, .rightColumn > h2, .leftColumn > h1, .leftColumn > h2
+{
+    margin-top: 0;
+}
+
+/* FORM LAYOUT ELEMENTS   
+----------------------------------------------------------*/
+
+fieldset 
+{
+    margin: 1em 0;
+    padding: 1em;
+    border: 1px solid #CCC;
+}
+
+fieldset p 
+{
+    margin: 2px 12px 10px 10px;
+}
+
+legend 
+{
+    font-size: 1.1em;
+    font-weight: 600;
+    padding: 2px 4px 8px 4px;
+}
+
+/*
+input[type="text"] 
+{
+    width: 200px;
+    border: 1px solid #CCC;
+}
+
+input[type="password"] 
+{
+    width: 200px;
+    border: 1px solid #CCC;
+}
+*/
+
+/* TABLE
+----------------------------------------------------------*/
+
+table 
+{
+  border: solid 1px #7399CE;
+  border-collapse: collapse;
+}
+
+/* ถ้า td ธรรมดาต้องไม่มีของ เพราะบางกรณีที่ซ๋อน td อื่นแล้วจะเกิดขอบจากตัวนี้ */
+table td 
+{
+  padding: 5px;   
+  /*border: solid 1px #7399CE; */
+  border-width:0;
+}
+
+table th
+{
+  padding: 6px 5px;
+  text-align: center;
+  background-color: #7399CE; 
+  border: solid 1px #7399CE;   
+}
+
+/* MISC  
+----------------------------------------------------------*/
+.clear
+{
+    clear: both;
+}
+
+.error
+{
+    color:Red;
+}
+
+#title
+{
+    display:block;
+    float:left;
+    text-align:left;
+}
+
+/*
+**** Data Panel ต่าง ๆ
+*/
+.message, 
+.warningmessage, 
+.errormessage
+{
+    position: absolute;
+    top: 34px; /* top 55px ของ title - height ของตัวนี้ */
+    right:0;
+    /*width: 100px;*/
+    text-align:center; 
+    padding: 2px; 
+    margin-top:0; 
+    height: 15px;
+    /*text-decoration: blink;*/
+}
+
+.message 
+{ 
+    background: gray; 
+    color: White; 
+    z-index:101;
+}
+
+.warningmessage 
+{ 
+    background: gray; 
+    color: Yellow;
+    z-index:102;
+}
+
+.errormessage 
+{ 
+    background: Red; 
+    color: Yellow; 
+    z-index:103;
+}
+
+.PerformanceMonitor
+{
+    position:absolute; 
+    right:0;
+    bottom: 42px; /* 42px as bottom*/
+    display:block; 
+    height:12px; 
+    font-size:10px; 
+    z-index:7; 
+    /*overflow:hidden; */
+    padding: 0;
+    margin: 0;
+    font-family: Tahoma, Microsoft Sans Serif, MS Sans Serif, Verdana, Arial, Serif;
+}
+
+.datastatus
+{
+    position:absolute;
+    left: 185px; /* left panel 185px */
+    /*right: 100px; *//* ให้กระโดดจากความยาวของ PerformanceMonitor */
+    bottom : 42px; /* 42px as bottom*/
+    display:none; /*block*/ 
+    height:12px; 
+    font-size:10px; 
+    z-index:9; 
+    padding: 0;
+    margin: 0;
+    font-family: Tahoma, Microsoft Sans Serif, MS Sans Serif, Verdana, Arial, Serif;
+    color : Red;
+}
+
+/* Styles for validation helpers
+-----------------------------------------------------------*/
+.field-validation-error
+{
+    color: #ff0000;
+}
+
+.field-validation-valid
+{
+    display: none;
+}
+
+.input-validation-error
+{
+    border: 1px solid #ff0000;
+    background-color: #ffeeee;
+}
+
+.validation-summary-errors
+{
+    font-weight: bold;
+    color: #ff0000;
+}
+
+.validation-summary-valid
+{
+    display: none;
+}
+
+/* Styles for editor and display helpers
+----------------------------------------------------------*/
+.display-label,
+.editor-label,
+.display-field,
+.editor-field
+{
+    margin: 0.5em 0;
+}
+
+.text-box
+{
+    width: 30em;
+}
+
+.readonly
+{
+    background-color: #DCDCDC;
+    /*border-color: Black;*/
+    color:Gray;
+    border-color: Gray;
+    border-width: 1px;
+    border-style:solid;
+}
+
+.text-box.multi-line
+{
+    height: 6.5em;
+}
+
+.tri-state
+{
+    width: 6em;
+}
+
+div.growlUI h1, div.growlUI h2 
+{
+	color: white; 
+	padding: 5px 5px 5px 75px; 
+	text-align: left;
+}
+
+.no-line
+{
+    border-width:0;
+    vertical-align:middle;
+}
+td.no-line
+{
+    border-width:0;
+    border-style:solid;
+}    
+
+.gridbtn,
+.submitbutton,
+.not-submitbutton 
+{
+    border: 1px solid #7399CE;
+    background: #ccf;
+    min-height:22px;
+    padding-left: 5px;
+    padding-right: 5px;
+    background-image: url(images/submit.png); 
+}
+.gridbtn:hover,
+.submitbutton:hover,
+.not-submitbutton:hover 
+{
+    border: 1px solid #0000FF;
+    background: #eef;
+    min-height:22px;
+    padding-left: 5px;
+    padding-right: 5px;
+    background-image: url(images/submit2.png); 
+}
+
+.btn-insert-detail
+{
+    width:40px;
+    height:18px;
+    background-image: url(images/toolbars/add_16.png); 
+    background-repeat:no-repeat;
+    background-position:left;
+    padding: 1px 0px 1px 8px;
+    margin: 0px 0px 0px 0px;
+}
+
+.btn-insert-detail:hover
+{
+    background-image: url(images/toolbars/add_16.png); 
+    background-repeat:no-repeat;
+    background-position:left;
+}
+
+.btn-edit-master,
+.btn-edit-master:hover,
+.btn-edit-detail,
+.btn-edit-detail:hover
+{
+    width:40px;
+    height:16px;
+    background-image: url(images/toolbars/edit.gif); 
+    background-repeat:no-repeat;
+    background-position:left;
+    padding: 1px 0px 1px 8px;
+    margin: 0px 0px 0px 3px;
+}
+
+.detail-head-toolbar
+{
+    padding: 0 0 0 0;
+    /*width: 99%;*/
+}
+
+.detailwindow-wrap
+{
+}
+
+/* Toolbar */
+.toolbaritem
+{
+    height:25px; 
+    width:90px; 
+    text-align:center;
+}
+.toolbarsep
+{
+    height:25px; 
+    width:1px; 
+    background-color: #104000
+}
+
+.toolbarsubmenu
+{
+    text-align:left;
+}
+.toolbaritem img
+{
+    height:20px; 
+    width:20px; 
+}
+
+/* Date panel in Toolbar */
+.dtppanel
+{
+    font-size: 1.2em;
+}
+
+.dtppanel-cb
+{
+    float: left;
+}
+
+.dtppanel-cmd
+{
+    float: right;
+}
+
+.ConveyanceSearchPanel,
+.AlienSearchPanel,
+.dtppanel-input
+{
+    border-color: Blue;
+    border-width: 2;
+    border-style: inset;
+    background-color: #E1E9F7;
+}
+
+.dtppanel-input
+{
+    height:30px;
+    padding-top: 15px;
+    text-align: center;
+}
+
+.gridbtn
+{
+    padding: 0 0 0 0;
+}
+
+.user-loginfo
+{
+    position:relative;
+    left: 0; 
+    background-color: Navy;
+    color: Yellow;
+    display:block; 
+    height:15px; 
+    font-size:12px; 
+    /*z-index:8; */
+    margin: 0 0px 0 0px;
+    padding : 0 20px 0 20px;
+    font-family: Tahoma, Microsoft Sans Serif, MS Sans Serif, Verdana, Arial, Serif;
+}
+
+.user-logaddinfo
+{
+    float: left;
+    margin: 0 5px 0 5px;
+}
+
+.user-logupdateinfo
+{
+    float: left;
+    margin: 0 5px 0 5px;
+}
+
+/*
+  general Edit Form Structure
+*/
+.generaleditform,
+.generaleditsubform
+{
+    padding: 5px 20px 5px 20px;
+}
+
+table.generaleditform ,
+table.generaleditsubform 
+{
+  border-collapse:collapse;
+  border-style: none;
+  border-width: 0px;
+}
+
+table.generaleditform td,
+table.generaleditsubform td 
+{
+  padding: 5px;   
+  /*border-width: 2px;*/
+  border-style: inset;
+  border-color: #CCCCFF;
+}
+
+table.personname-form td 
+{
+  padding: 0 5px 0 5px;   
+}
+
+td.editor-label
+{
+  padding: 5px;   
+  text-align : right;
+  vertical-align: middle;
+  border-width: 0px;
+  /*background-color: #E0E9EF;*/
+}
+
+td.editor-field
+{
+  padding: 5px;   
+  text-align : left;
+  vertical-align: middle;
+  border-width: 0px;
+}
+
+td.editbreak
+{
+    border-top-width:3px;
+    border-bottom-width:3px;
+}
+
+.personname-form,
+.address-form,
+.portdetail-form
+{
+    border: 1px inset #CCCCFF;
+}
+
+.iddocument-form
+{
+    border: 1px solid #CCCCFF;
+}
+
+.AlienSearchPanel
+{
+    padding-bottom: 4px;
+}
+
+#conveyance-form,
+#alien-form
+{
+    /*สำหรับ ajaxupdate ลงใน alien, conveyance ตามลำกลับ */
+}
+
+/* กำหนดสีพื้นให้ Form ที่ต่างกันเพื่อป้องกันความสับสน */
+.visa-edit
+{
+    background-color: #FAEBD7;
+}
+.stay-edit
+{
+    background-color: #FFDAB9;
+}
+.endorse-edit
+{
+    background-color: #C1FFC1;
+}
+.reentry-edit
+{
+    background-color: #B0E0E6;
+}
+.conveyancesinout-edit
+{
+    background-color: #FDF0F0;
+    padding: 0 0 0 0;
+}
+.addremovecrewA-edit
+{
+    background-color: #FFD0D0;
+}
+.addremovecrewR-edit
+{
+    background-color: #D0D0FF;
+}
+
+/*เอาไว้ซ่อนพวกที่แสดงบาง form เท่านั้น */
+.showonly-visa,
+.showonly-reentry,
+.showonly-endorse,
+.showonly-stay,
+.showonly-crew,
+.showonly-addremovecrew,
+
+td.showonly-visa,
+td.showonly-reentry,
+td.showonly-endorse,
+td.showonly-stay,
+td.showonly-crew,
+td.showonly-addremovecrew,
+
+tr.showonly-visa,
+tr.showonly-reentry,
+tr.showonly-endorse,
+tr.showonly-stay,
+tr.showonly-crew,
+tr.showonly-addremovecrew
+{ 
+    display:none; 
+}
+
+/*
+    For Search Panel
+*/
+#SearchAllPanel
+{
+    width: 99.8%;
+    background-color: #6080FF;
+    border-style:groove;
+    border-color : Blue;
+    border-width : 1px;
+}

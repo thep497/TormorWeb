@@ -1,0 +1,32 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewMasterPage<NNS.Web.Areas.UserAdministration.Models.UserAdministration.DetailsViewModel>" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
+    <asp:ContentPlaceHolder ID="TitleContent" runat="server" />
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ScriptContent" runat="server">
+    <asp:ContentPlaceHolder ID="ScriptContent" runat="server" />
+    <link href='<% =Url.Content("~/Content/MvcMembership.css") %>' rel="stylesheet" type="text/css" />
+</asp:Content>
+<asp:Content ID="Content3" ContentPlaceHolderID="MainContent" runat="server">
+<%=  Html.Telerik().TabStrip()
+                .Name("MembershipTab")
+                .Items(items =>
+                 {
+                     items.Add()
+                         .Text("Details")
+                         .Action("Details", "UserAdministration", new { area = "UserAdministration", id = Model.User.ProviderUserKey });
+                     items.Add()
+                        .Text("Password")
+                        .Action("Password", "UserAdministration", new { area = "UserAdministration", id = Model.User.ProviderUserKey });
+                     items.Add()
+                        .Text("Roles")
+                        .Action("UsersRoles", "UserAdministration", new { area = "UserAdministration", id = Model.User.ProviderUserKey });
+                     items.Add()
+                        .Text("Profile")
+                        .Action("UsersProfiles", "UserAdministration", new { area = "UserAdministration", id = Model.User.ProviderUserKey });
+                 })
+%>    
+<div class="mvcMembershipall">
+<asp:ContentPlaceHolder ID="MainContent" runat="server" />
+</div>
+<%= Html.DefineEditForm() %>
+</asp:Content>

@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<siteMap>
+  <siteMapNode title="หน้าหลัก" controller="Home" action="Index">
+
+    <siteMapNode area="" controller="Home" action="Index" title="หน้าหลัก"/>
+    <!--<siteMapNode area="Reference" controller="Reference" action="Index/1" title="ประเภทระยะเวลา"/>-->
+    <siteMapNode title="ข้อมูลบุคคล">
+      <siteMapNode area="Reference" controller="Reference" action="Index/7" title="คำนำหน้าชื่อ" style="color:red"/>
+      <siteMapNode area="Reference" controller="Reference" action="Index/5" title="สัญชาติ"/>
+    </siteMapNode>
+    <siteMapNode title="ขอต่ออายุ">
+      <siteMapNode area="Reference" controller="Reference" action="Index/2" title="ระยะเวลา"/>
+      <siteMapNode area="Reference" controller="Reference" action="Index/3" title="เหตุผลการขออยู่ต่อ"/>
+      <siteMapNode area="Reference" controller="Reference" action="Index/4" title="เหตุผลย่อย (ขออยู่ต่อ)"/>
+    </siteMapNode>
+    <siteMapNode title="Re-Entry">
+      <siteMapNode area="Reference" controller="Reference" action="Index/9" title="รหัส Re-Entry"/>
+      <siteMapNode area="Reference" controller="Reference" action="Index/10" title="ครั้ง Re-Entry"/>
+      <siteMapNode area="Reference" controller="Reference" action="Index/11" title="จำนวนเงิน Re-Entry"/>
+    </siteMapNode>
+    <siteMapNode title="สลักหลังถิ่นที่อยู่">
+      <siteMapNode area="Reference" controller="Reference" action="Index/12" title="รหัสตม."/>
+      <siteMapNode area="Reference" controller="Reference" action="Index/13" title="ครั้ง (ถิ่นที่อยู่)"/>
+      <siteMapNode area="Reference" controller="Reference" action="Index/14" title="จำนวนเงิน (ถิ่นที่อยู่)"/>
+    </siteMapNode>
+    <siteMapNode title="รายงานตัว 90 วัน">
+      <siteMapNode area="Reference" controller="Reference" action="Index/8" title="พาหนะเข้าประเทศ"/>
+    </siteMapNode>
+    <siteMapNode title="ทั่วไป">
+      <siteMapNode area="Reference" controller="Reference" action="Index/6" title="จังหวัด"/>
+      <siteMapNode area="Reference" controller="Reference" action="Index/15" title="ท่าเรือ (ในประเทศ)"/>
+    </siteMapNode>
+
+  </siteMapNode>
+</siteMap>

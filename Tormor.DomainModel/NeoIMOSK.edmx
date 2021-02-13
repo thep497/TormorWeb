@@ -1,0 +1,1730 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="NeoIMOSKModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="NeoIMOSKModelStoreContainer">
+    <EntitySet Name="VisaDetails" EntityType="NeoIMOSKModel.Store.VisaDetails" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ReEntrys" EntityType="NeoIMOSKModel.Store.ReEntrys" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Aliens" EntityType="NeoIMOSKModel.Store.Aliens" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Staying90Days" EntityType="NeoIMOSKModel.Store.Staying90Days" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Endorses" EntityType="NeoIMOSKModel.Store.Endorses" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="zz_Environs" EntityType="NeoIMOSKModel.Store.zz_Environs" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Conveyances" EntityType="NeoIMOSKModel.Store.Conveyances" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ConveyanceInOuts" EntityType="NeoIMOSKModel.Store.ConveyanceInOuts" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Crews" EntityType="NeoIMOSKModel.Store.Crews" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="zz_References" EntityType="NeoIMOSKModel.Store.zz_References" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="EndorseStamps" EntityType="NeoIMOSKModel.Store.EndorseStamps" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="AddRemoveCrews" EntityType="NeoIMOSKModel.Store.AddRemoveCrews" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="PassportHistories" EntityType="NeoIMOSKModel.Store.PassportHistories" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="AlienVisaDetail" Association="NeoIMOSKModel.Store.AlienVisaDetail">
+      <End Role="Alien" EntitySet="Aliens" />
+      <End Role="VisaDetail" EntitySet="VisaDetails" />
+    </AssociationSet>
+    <AssociationSet Name="AlienReEntryDetail" Association="NeoIMOSKModel.Store.AlienReEntryDetail">
+      <End Role="Alien" EntitySet="Aliens" />
+      <End Role="ReEntryDetail" EntitySet="ReEntrys" />
+    </AssociationSet>
+    <AssociationSet Name="AlienStaying90Day" Association="NeoIMOSKModel.Store.AlienStaying90Day">
+      <End Role="Alien" EntitySet="Aliens" />
+      <End Role="Staying90Day" EntitySet="Staying90Days" />
+    </AssociationSet>
+    <AssociationSet Name="AlienCheckOut" Association="NeoIMOSKModel.Store.AlienCheckOut">
+      <End Role="Alien" EntitySet="Aliens" />
+      <End Role="CheckOut" EntitySet="Endorses" />
+    </AssociationSet>
+    <AssociationSet Name="ConveyanceConveyancenOut" Association="NeoIMOSKModel.Store.ConveyanceConveyancenOut">
+      <End Role="Conveyance" EntitySet="Conveyances" />
+      <End Role="ConveyancenOut" EntitySet="ConveyanceInOuts" />
+    </AssociationSet>
+    <AssociationSet Name="ConveyanceInOutPassenger" Association="NeoIMOSKModel.Store.ConveyanceInOutPassenger">
+      <End Role="ConveyanceInOut" EntitySet="ConveyanceInOuts" />
+      <End Role="Passenger" EntitySet="Crews" />
+    </AssociationSet>
+    <AssociationSet Name="AlienPassenger" Association="NeoIMOSKModel.Store.AlienPassenger">
+      <End Role="Alien" EntitySet="Aliens" />
+      <End Role="Passenger" EntitySet="Crews" />
+    </AssociationSet>
+    <AssociationSet Name="EndorseEndorseStamp" Association="NeoIMOSKModel.Store.EndorseEndorseStamp">
+      <End Role="Endorse" EntitySet="Endorses" />
+      <End Role="EndorseStamp" EntitySet="EndorseStamps" />
+    </AssociationSet>
+    <AssociationSet Name="AlienAddRemoveCrew" Association="NeoIMOSKModel.Store.AlienAddRemoveCrew">
+      <End Role="Alien" EntitySet="Aliens" />
+      <End Role="AddRemoveCrew" EntitySet="AddRemoveCrews" />
+    </AssociationSet>
+    <AssociationSet Name="AlienPassportHistory" Association="NeoIMOSKModel.Store.AlienPassportHistory">
+      <End Role="Alien" EntitySet="Aliens" />
+      <End Role="PassportHistory" EntitySet="PassportHistories" />
+    </AssociationSet>
+    <AssociationSet Name="ConveyanceInOutAddRemoveCrew" Association="NeoIMOSKModel.Store.ConveyanceInOutAddRemoveCrew">
+      <End Role="ConveyanceInOut" EntitySet="ConveyanceInOuts" />
+      <End Role="AddRemoveCrew" EntitySet="AddRemoveCrews" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="VisaDetails">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AlienId" Type="int" Nullable="false" />
+    <Property Name="Code" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="RequestDate" Type="datetime" Nullable="false" />
+    <Property Name="ResultAppointmentDate" Type="datetime" Nullable="true" />
+    <Property Name="StayType" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="StayPeriod" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="StayReason" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="StayReasonDetail" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="PassportCard_DocNo" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="PassportCard_DateIssued" Type="datetime" Nullable="true" />
+    <Property Name="PassportCard_DateExpired" Type="datetime" Nullable="true" />
+    <Property Name="PassportCard_IssuedFrom" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="DateArrive" Type="datetime" Nullable="true" />
+    <Property Name="IsPermit" Type="bit" Nullable="true" />
+    <Property Name="PermitToDate" Type="datetime" Nullable="true" />
+    <Property Name="Invoice_InvoiceNo" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="Invoice_Charge" Type="decimal" Nullable="true" />
+    <Property Name="CurrentAddress_AddrNo" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="CurrentAddress_Road" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="CurrentAddress_Tumbol" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="CurrentAddress_Amphur" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="CurrentAddress_Province" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="CurrentAddress_Phone" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="CurrentAddress_Postcode" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="IsCancel" Type="bit" Nullable="false" DefaultValue="false" />
+    <Property Name="UpdateInfo_AddedBy" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="UpdateInfo_AddedDate" Type="datetime" Nullable="true" />
+    <Property Name="UpdateInfo_UpdatedBy" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="UpdateInfo_UpdatedDate" Type="datetime" Nullable="true" />
+    <Property Name="ExtendedData_Custom1" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="ExtendedData_Custom2" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="ExtendedData_Custom3" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="ExtendedData_Custom4" Type="nvarchar(max)" Nullable="true" />
+  </EntityType>
+  <EntityType Name="ReEntrys">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AlienId" Type="int" Nullable="false" />
+    <Property Name="Code" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="RequestDate" Type="datetime" Nullable="false" />
+    <Property Name="PassportCard_DocNo" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="PassportCard_DateIssued" Type="datetime" Nullable="true" />
+    <Property Name="PassportCard_DateExpired" Type="datetime" Nullable="true" />
+    <Property Name="PassportCard_IssuedFrom" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="ReEntryCode" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="SMTime" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Invoice_InvoiceNo" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="Invoice_Charge" Type="decimal" Nullable="true" />
+    <Property Name="PermitToDate" Type="datetime" Nullable="true" />
+    <Property Name="IsCancel" Type="bit" Nullable="false" DefaultValue="false" />
+    <Property Name="UpdateInfo_AddedBy" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="UpdateInfo_AddedDate" Type="datetime" Nullable="true" />
+    <Property Name="UpdateInfo_UpdatedBy" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="UpdateInfo_UpdatedDate" Type="datetime" Nullable="true" />
+    <Property Name="ExtendedData_Custom1" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="ExtendedData_Custom2" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="ExtendedData_Custom3" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="ExtendedData_Custom4" Type="nvarchar(max)" Nullable="true" />
+  </EntityType>
+  <EntityType Name="Aliens">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name_Title" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="Name_FirstName" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Name_MiddleName" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Name_LastName" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="DateOfBirth" Type="datetime" Nullable="true" />
+    <Property Name="IsThai" Type="bit" Nullable="false" />
+    <Property Name="Nationality" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Sex" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="DataInType" Type="int" Nullable="true" />
+    <Property Name="CurrentAddress_AddrNo" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="CurrentAddress_Road" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="CurrentAddress_Tumbol" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="CurrentAddress_Amphur" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="CurrentAddress_Province" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="CurrentAddress_Phone" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="CurrentAddress_Postcode" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="PassportCard_DocNo" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="PassportCard_DateIssued" Type="datetime" Nullable="true" />
+    <Property Name="PassportCard_DateExpired" Type="datetime" Nullable="true" />
+    <Property Name="PassportCard_IssuedFrom" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="IDCardNo" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="SeamanCardNo" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="HabitatCard_DocNo" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="HabitatCard_DateIssued" Type="datetime" Nullable="true" />
+    <Property Name="HabitatCard_DateExpired" Type="datetime" Nullable="true" />
+    <Property Name="HabitatCard_IssuedFrom" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Remark" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Photo_FPicture" Type="varbinary(max)" Nullable="true" />
+    <Property Name="Photo_ContentType" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="IsCancel" Type="bit" Nullable="false" DefaultValue="false" />
+    <Property Name="UpdateInfo_AddedBy" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="UpdateInfo_AddedDate" Type="datetime" Nullable="true" />
+    <Property Name="UpdateInfo_UpdatedBy" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="UpdateInfo_UpdatedDate" Type="datetime" Nullable="true" />
+    <Property Name="ExtendedData_Custom1" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="ExtendedData_Custom2" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="ExtendedData_Custom3" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="ExtendedData_Custom4" Type="nvarchar(max)" Nullable="true" />
+  </EntityType>
+  <EntityType Name="Staying90Days">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AlienId" Type="int" Nullable="false" />
+    <Property Name="Code" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="RequestDate" Type="datetime" Nullable="false" />
+    <Property Name="ArrivalDate" Type="datetime" Nullable="true" />
+    <Property Name="ArrivalBy" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="VisaType" Type="int" Nullable="true" />
+    <Property Name="PassportCard_DocNo" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="PassportCard_DateIssued" Type="datetime" Nullable="true" />
+    <Property Name="PassportCard_DateExpired" Type="datetime" Nullable="true" />
+    <Property Name="PassportCard_IssuedFrom" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="ArrivalCard_DocNo" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="ArrivalCard_DateIssued" Type="datetime" Nullable="true" />
+    <Property Name="ArrivalCard_DateExpired" Type="datetime" Nullable="true" />
+    <Property Name="ArrivalCard_IssuedFrom" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="CurrentAddress_AddrNo" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="CurrentAddress_Road" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="CurrentAddress_Tumbol" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="CurrentAddress_Amphur" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="CurrentAddress_Province" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="CurrentAddress_Phone" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="CurrentAddress_Postcode" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Invoice_InvoiceNo" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="Invoice_Charge" Type="decimal" Nullable="true" />
+    <Property Name="IsCancel" Type="bit" Nullable="false" DefaultValue="false" />
+    <Property Name="UpdateInfo_AddedBy" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="UpdateInfo_AddedDate" Type="datetime" Nullable="true" />
+    <Property Name="UpdateInfo_UpdatedBy" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="UpdateInfo_UpdatedDate" Type="datetime" Nullable="true" />
+    <Property Name="ExtendedData_Custom1" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="ExtendedData_Custom2" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="ExtendedData_Custom3" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="ExtendedData_Custom4" Type="nvarchar(max)" Nullable="true" />
+  </EntityType>
+  <EntityType Name="Endorses">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AlienId" Type="int" Nullable="false" />
+    <Property Name="Code" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="TMType" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="HabitatCard_DocNo" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="HabitatCard_DateIssued" Type="datetime" Nullable="true" />
+    <Property Name="HabitatCard_DateExpired" Type="datetime" Nullable="true" />
+    <Property Name="HabitatCard_IssuedFrom" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="PassportCard_DocNo" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="PassportCard_DateIssued" Type="datetime" Nullable="true" />
+    <Property Name="PassportCard_DateExpired" Type="datetime" Nullable="true" />
+    <Property Name="PassportCard_IssuedFrom" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="OutDetail_Destination" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="OutDetail_ByVehicle" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="OutDetail_OutDate" Type="datetime" Nullable="true" />
+    <Property Name="RequestDate" Type="datetime" Nullable="false" />
+    <Property Name="ExpiredDate" Type="datetime" Nullable="true" />
+    <Property Name="Invoice_InvoiceNo" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="Invoice_Charge" Type="decimal" Nullable="true" />
+    <Property Name="CurrentAddress_AddrNo" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="CurrentAddress_Road" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="CurrentAddress_Tumbol" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="CurrentAddress_Amphur" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="CurrentAddress_Province" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="CurrentAddress_Phone" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="CurrentAddress_Postcode" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Remark" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="IsCancel" Type="bit" Nullable="false" DefaultValue="false" />
+    <Property Name="UpdateInfo_AddedBy" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="UpdateInfo_AddedDate" Type="datetime" Nullable="true" />
+    <Property Name="UpdateInfo_UpdatedBy" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="UpdateInfo_UpdatedDate" Type="datetime" Nullable="true" />
+    <Property Name="ExtendedData_Custom1" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="ExtendedData_Custom2" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="ExtendedData_Custom3" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="ExtendedData_Custom4" Type="nvarchar(max)" Nullable="true" />
+  </EntityType>
+  <EntityType Name="zz_Environs">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="OfficeName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="OfficeAddress_AddrNo" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="OfficeAddress_Road" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="OfficeAddress_Tumbol" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="OfficeAddress_Amphur" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="OfficeAddress_Province" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="OfficeAddress_Phone" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="OfficeAddress_Postcode" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="UpdateInfo_AddedBy" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="UpdateInfo_AddedDate" Type="datetime" Nullable="true" />
+    <Property Name="UpdateInfo_UpdatedBy" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="UpdateInfo_UpdatedDate" Type="datetime" Nullable="true" />
+  </EntityType>
+  <EntityType Name="Conveyances">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" Nullable="true" MaxLength="200" />
+    <Property Name="RegistrationNo" Type="nvarchar" Nullable="true" MaxLength="200" />
+    <Property Name="OwnerName" Type="nvarchar" Nullable="true" MaxLength="200" />
+    <Property Name="IsCancel" Type="bit" Nullable="false" DefaultValue="false" />
+    <Property Name="UpdateInfo_AddedBy" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="UpdateInfo_AddedDate" Type="datetime" Nullable="true" />
+    <Property Name="UpdateInfo_UpdatedBy" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="UpdateInfo_UpdatedDate" Type="datetime" Nullable="true" />
+    <Property Name="ExtendedData_Custom1" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="ExtendedData_Custom2" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="ExtendedData_Custom3" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="ExtendedData_Custom4" Type="nvarchar(max)" Nullable="true" />
+  </EntityType>
+  <EntityType Name="ConveyanceInOuts">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Code" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="ConveyanceId" Type="int" Nullable="false" />
+    <Property Name="InOutType" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="RequestDate" Type="datetime" Nullable="false" />
+    <Property Name="InOutDate" Type="datetime" Nullable="false" />
+    <Property Name="InOutTime" Type="datetime" Nullable="true" />
+    <Property Name="PortInFrom_PortName" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="PortInFrom_Country" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="PortInTo_PortName" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="PortInTo_Country" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="PortOutFrom_PortName" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="PortOutFrom_Country" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="PortOutTo_PortName" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="PortOutTo_Country" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="NumCrew" Type="int" Nullable="true" />
+    <Property Name="NumPassenger" Type="int" Nullable="true" />
+    <Property Name="AgencyName" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="InspectOfficer" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Invoice_InvoiceNo" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="Invoice_Charge" Type="decimal" Nullable="true" />
+    <Property Name="IsCancel" Type="bit" Nullable="false" DefaultValue="false" />
+    <Property Name="UpdateInfo_AddedBy" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="UpdateInfo_AddedDate" Type="datetime" Nullable="true" />
+    <Property Name="UpdateInfo_UpdatedBy" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="UpdateInfo_UpdatedDate" Type="datetime" Nullable="true" />
+    <Property Name="ExtendedData_Custom1" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="ExtendedData_Custom2" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="ExtendedData_Custom3" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="ExtendedData_Custom4" Type="nvarchar(max)" Nullable="true" />
+  </EntityType>
+  <EntityType Name="Crews">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ConveyanceInOutId" Type="int" Nullable="false" />
+    <Property Name="AlienId" Type="int" Nullable="false" />
+    <Property Name="IsCrew" Type="bit" Nullable="true" />
+    <Property Name="Code" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="PassportCard_DocNo" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="PassportCard_DateIssued" Type="datetime" Nullable="true" />
+    <Property Name="PassportCard_DateExpired" Type="datetime" Nullable="true" />
+    <Property Name="PassportCard_IssuedFrom" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="IDCardNo" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="SeamanCardNo" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Remark" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="IsCancel" Type="bit" Nullable="false" DefaultValue="false" />
+    <Property Name="UpdateInfo_AddedBy" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="UpdateInfo_AddedDate" Type="datetime" Nullable="true" />
+    <Property Name="UpdateInfo_UpdatedBy" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="UpdateInfo_UpdatedDate" Type="datetime" Nullable="true" />
+    <Property Name="ExtendedData_Custom1" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="ExtendedData_Custom2" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="ExtendedData_Custom3" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="ExtendedData_Custom4" Type="nvarchar(max)" Nullable="true" />
+  </EntityType>
+  <EntityType Name="zz_References">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RefTypeId" Type="int" Nullable="false" />
+    <Property Name="Code" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="RefName" Type="nvarchar" Nullable="false" MaxLength="250" />
+    <Property Name="RefDesc" Type="nvarchar" Nullable="true" MaxLength="250" />
+    <Property Name="RefRefTypeId" Type="int" Nullable="true" />
+    <Property Name="RefCode" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="IsCancel" Type="bit" Nullable="false" DefaultValue="false" />
+    <Property Name="UpdateInfo_AddedBy" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="UpdateInfo_AddedDate" Type="datetime" Nullable="true" />
+    <Property Name="UpdateInfo_UpdatedBy" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="UpdateInfo_UpdatedDate" Type="datetime" Nullable="true" />
+  </EntityType>
+  <EntityType Name="EndorseStamps">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EndorseId" Type="int" Nullable="false" />
+    <Property Name="Code" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="StampDate" Type="datetime" Nullable="false" />
+    <Property Name="StampExpiredDate" Type="datetime" Nullable="true" />
+    <Property Name="Invoice_InvoiceNo" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="Invoice_Charge" Type="decimal" Nullable="true" />
+    <Property Name="SMTime" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="IsCancel" Type="bit" Nullable="false" DefaultValue="false" />
+    <Property Name="UpdateInfo_AddedBy" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="UpdateInfo_AddedDate" Type="datetime" Nullable="true" />
+    <Property Name="UpdateInfo_UpdatedBy" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="UpdateInfo_UpdatedDate" Type="datetime" Nullable="true" />
+    <Property Name="ExtendedData_Custom1" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="ExtendedData_Custom2" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="ExtendedData_Custom3" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="ExtendedData_Custom4" Type="nvarchar(max)" Nullable="true" />
+  </EntityType>
+  <EntityType Name="AddRemoveCrews">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AlienId" Type="int" Nullable="false" />
+    <Property Name="ConveyanceInOutId" Type="int" Nullable="true" />
+    <Property Name="AddRemoveType" Type="int" Nullable="false" />
+    <Property Name="Code" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="SubCode" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="RequestDate" Type="datetime" Nullable="false" />
+    <Property Name="Company" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="InDetail_InDate" Type="datetime" Nullable="true" />
+    <Property Name="InDetail_InMethod" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="InDetail_InWay" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="OutDetail_InDate" Type="datetime" Nullable="true" />
+    <Property Name="OutDetail_InMethod" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="OutDetail_InWay" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Invoice_InvoiceNo" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="Invoice_Charge" Type="decimal" Nullable="true" />
+    <Property Name="IsCancel" Type="bit" Nullable="false" DefaultValue="false" />
+    <Property Name="UpdateInfo_AddedBy" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="UpdateInfo_AddedDate" Type="datetime" Nullable="true" />
+    <Property Name="UpdateInfo_UpdatedBy" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="UpdateInfo_UpdatedDate" Type="datetime" Nullable="true" />
+    <Property Name="ExtendedData_Custom1" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="ExtendedData_Custom2" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="ExtendedData_Custom3" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="ExtendedData_Custom4" Type="nvarchar(max)" Nullable="true" />
+  </EntityType>
+  <EntityType Name="PassportHistories">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IsPassport" Type="bit" Nullable="false" DefaultValue="true" />
+    <Property Name="AlienId" Type="int" Nullable="false" />
+    <Property Name="PassportCard_DocNo" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="PassportCard_DateIssued" Type="datetime" Nullable="true" />
+    <Property Name="PassportCard_DateExpired" Type="datetime" Nullable="true" />
+    <Property Name="PassportCard_IssuedFrom" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="IsCancel" Type="bit" Nullable="false" DefaultValue="false" />
+    <Property Name="UpdateInfo_AddedBy" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="UpdateInfo_AddedDate" Type="datetime" Nullable="true" />
+    <Property Name="UpdateInfo_UpdatedBy" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="UpdateInfo_UpdatedDate" Type="datetime" Nullable="true" />
+    <Property Name="ExtendedData_Custom1" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="ExtendedData_Custom2" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="ExtendedData_Custom3" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="ExtendedData_Custom4" Type="nvarchar(max)" Nullable="true" />
+  </EntityType>
+  <Association Name="AlienVisaDetail">
+    <End Role="Alien" Type="NeoIMOSKModel.Store.Aliens" Multiplicity="1" />
+    <End Role="VisaDetail" Type="NeoIMOSKModel.Store.VisaDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Alien">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="VisaDetail">
+        <PropertyRef Name="AlienId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="AlienReEntryDetail">
+    <End Role="Alien" Type="NeoIMOSKModel.Store.Aliens" Multiplicity="1" />
+    <End Role="ReEntryDetail" Type="NeoIMOSKModel.Store.ReEntrys" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Alien">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ReEntryDetail">
+        <PropertyRef Name="AlienId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="AlienStaying90Day">
+    <End Role="Alien" Type="NeoIMOSKModel.Store.Aliens" Multiplicity="1" />
+    <End Role="Staying90Day" Type="NeoIMOSKModel.Store.Staying90Days" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Alien">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Staying90Day">
+        <PropertyRef Name="AlienId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="AlienCheckOut">
+    <End Role="Alien" Type="NeoIMOSKModel.Store.Aliens" Multiplicity="1" />
+    <End Role="CheckOut" Type="NeoIMOSKModel.Store.Endorses" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Alien">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CheckOut">
+        <PropertyRef Name="AlienId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ConveyanceConveyancenOut">
+    <End Role="Conveyance" Type="NeoIMOSKModel.Store.Conveyances" Multiplicity="1" />
+    <End Role="ConveyancenOut" Type="NeoIMOSKModel.Store.ConveyanceInOuts" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Conveyance">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ConveyancenOut">
+        <PropertyRef Name="ConveyanceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ConveyanceInOutPassenger">
+    <End Role="ConveyanceInOut" Type="NeoIMOSKModel.Store.ConveyanceInOuts" Multiplicity="1" />
+    <End Role="Passenger" Type="NeoIMOSKModel.Store.Crews" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ConveyanceInOut">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Passenger">
+        <PropertyRef Name="ConveyanceInOutId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="AlienPassenger">
+    <End Role="Alien" Type="NeoIMOSKModel.Store.Aliens" Multiplicity="1" />
+    <End Role="Passenger" Type="NeoIMOSKModel.Store.Crews" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Alien">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Passenger">
+        <PropertyRef Name="AlienId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="EndorseEndorseStamp">
+    <End Role="Endorse" Type="NeoIMOSKModel.Store.Endorses" Multiplicity="1" />
+    <End Role="EndorseStamp" Type="NeoIMOSKModel.Store.EndorseStamps" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Endorse">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="EndorseStamp">
+        <PropertyRef Name="EndorseId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="AlienAddRemoveCrew">
+    <End Role="Alien" Type="NeoIMOSKModel.Store.Aliens" Multiplicity="1" />
+    <End Role="AddRemoveCrew" Type="NeoIMOSKModel.Store.AddRemoveCrews" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Alien">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AddRemoveCrew">
+        <PropertyRef Name="AlienId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="AlienPassportHistory">
+    <End Role="Alien" Type="NeoIMOSKModel.Store.Aliens" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="PassportHistory" Type="NeoIMOSKModel.Store.PassportHistories" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Alien">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PassportHistory">
+        <PropertyRef Name="AlienId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ConveyanceInOutAddRemoveCrew">
+    <End Role="ConveyanceInOut" Type="NeoIMOSKModel.Store.ConveyanceInOuts" Multiplicity="0..1" />
+    <End Role="AddRemoveCrew" Type="NeoIMOSKModel.Store.AddRemoveCrews" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ConveyanceInOut">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AddRemoveCrew">
+        <PropertyRef Name="ConveyanceInOutId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="NeoIMOSKModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="NeoIMOSKEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="VisaDetails" EntityType="NeoIMOSKModel.VisaDetail" />
+          <EntitySet Name="ReEntrys" EntityType="NeoIMOSKModel.ReEntry" />
+          <EntitySet Name="Aliens" EntityType="NeoIMOSKModel.Alien" />
+          <EntitySet Name="Staying90Days" EntityType="NeoIMOSKModel.Staying90Day" />
+          <AssociationSet Name="AlienVisaDetail" Association="NeoIMOSKModel.AlienVisaDetail">
+            <End Role="Alien" EntitySet="Aliens" />
+            <End Role="VisaDetail" EntitySet="VisaDetails" />
+          </AssociationSet>
+          <AssociationSet Name="AlienReEntryDetail" Association="NeoIMOSKModel.AlienReEntryDetail">
+            <End Role="Alien" EntitySet="Aliens" />
+            <End Role="ReEntryDetail" EntitySet="ReEntrys" />
+          </AssociationSet>
+          <AssociationSet Name="AlienStaying90Day" Association="NeoIMOSKModel.AlienStaying90Day">
+            <End Role="Alien" EntitySet="Aliens" />
+            <End Role="Staying90Day" EntitySet="Staying90Days" />
+          </AssociationSet>
+          <EntitySet Name="Endorses" EntityType="NeoIMOSKModel.Endorse" />
+          <AssociationSet Name="AlienCheckOut" Association="NeoIMOSKModel.AlienCheckOut">
+            <End Role="Alien" EntitySet="Aliens" />
+            <End Role="CheckOut" EntitySet="Endorses" />
+          </AssociationSet>
+          <EntitySet Name="zz_Environs" EntityType="NeoIMOSKModel.zz_Environ" />
+          <EntitySet Name="Conveyances" EntityType="NeoIMOSKModel.Conveyance" />
+          <EntitySet Name="ConveyanceInOuts" EntityType="NeoIMOSKModel.ConveyanceInOut" />
+          <AssociationSet Name="ConveyanceConveyancenOut" Association="NeoIMOSKModel.ConveyanceConveyancenOut">
+            <End Role="Conveyance" EntitySet="Conveyances" />
+            <End Role="ConveyancenOut" EntitySet="ConveyanceInOuts" />
+          </AssociationSet>
+          <EntitySet Name="Crews" EntityType="NeoIMOSKModel.Crew" />
+          <AssociationSet Name="ConveyanceInOutPassenger" Association="NeoIMOSKModel.ConveyanceInOutPassenger">
+            <End Role="ConveyanceInOut" EntitySet="ConveyanceInOuts" />
+            <End Role="Passenger" EntitySet="Crews" />
+          </AssociationSet>
+          <AssociationSet Name="AlienPassenger" Association="NeoIMOSKModel.AlienPassenger">
+            <End Role="Alien" EntitySet="Aliens" />
+            <End Role="Passenger" EntitySet="Crews" />
+          </AssociationSet>
+          <EntitySet Name="zz_References" EntityType="NeoIMOSKModel.zz_Reference" />
+          <EntitySet Name="EndorseStamps" EntityType="NeoIMOSKModel.EndorseStamp" />
+          <AssociationSet Name="EndorseEndorseStamp" Association="NeoIMOSKModel.EndorseEndorseStamp">
+            <End Role="Endorse" EntitySet="Endorses" />
+            <End Role="EndorseStamp" EntitySet="EndorseStamps" />
+          </AssociationSet>
+          <EntitySet Name="AddRemoveCrews" EntityType="NeoIMOSKModel.AddRemoveCrew" />
+          <AssociationSet Name="AlienAddRemoveCrew" Association="NeoIMOSKModel.AlienAddRemoveCrew">
+            <End Role="Alien" EntitySet="Aliens" />
+            <End Role="AddRemoveCrew" EntitySet="AddRemoveCrews" />
+          </AssociationSet>
+          <EntitySet Name="PassportHistories" EntityType="NeoIMOSKModel.PassportHistory" />
+          <AssociationSet Name="AlienPassportHistory" Association="NeoIMOSKModel.AlienPassportHistory">
+            <End Role="Alien" EntitySet="Aliens" />
+            <End Role="PassportHistory" EntitySet="PassportHistories" />
+          </AssociationSet>
+          <AssociationSet Name="ConveyanceInOutAddRemoveCrew" Association="NeoIMOSKModel.ConveyanceInOutAddRemoveCrew">
+            <End Role="ConveyanceInOut" EntitySet="ConveyanceInOuts" />
+            <End Role="AddRemoveCrew" EntitySet="AddRemoveCrews" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Alien">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="NeoIMOSKModel.PersonName" Nullable="false" />
+          <Property Name="DateOfBirth" Type="DateTime" />
+          <Property Type="Boolean" Name="IsThai" Nullable="false" />
+          <Property Name="Nationality" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Type="String" Name="Sex" />
+          <Property Name="DataInType" Type="Int32" />
+          <Property Name="CurrentAddress" Type="NeoIMOSKModel.Address" Nullable="false" />
+          <Property Name="PassportCard" Type="NeoIMOSKModel.IDDocument" Nullable="false" />
+          <Property Type="String" Name="IDCardNo" MaxLength="Max" />
+          <Property Type="String" Name="SeamanCardNo" MaxLength="Max" />
+          <Property Name="HabitatCard" Type="NeoIMOSKModel.IDDocument" Nullable="false" />
+          <Property Name="Remark" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Photo" Type="NeoIMOSKModel.PhotoImage" Nullable="false" />
+          <Property Type="Boolean" Name="IsCancel" Nullable="false" DefaultValue="false" />
+          <Property Name="UpdateInfo" Type="NeoIMOSKModel.LogInfo" Nullable="false" />
+          <Property Name="ExtendedData" Type="NeoIMOSKModel.ExtendedData" Nullable="false" />
+          <NavigationProperty Name="VisaDetails" Relationship="NeoIMOSKModel.AlienVisaDetail" FromRole="Alien" ToRole="VisaDetail" />
+          <NavigationProperty Name="ReEntrys" Relationship="NeoIMOSKModel.AlienReEntryDetail" FromRole="Alien" ToRole="ReEntryDetail" />
+          <NavigationProperty Name="Staying90Days" Relationship="NeoIMOSKModel.AlienStaying90Day" FromRole="Alien" ToRole="Staying90Day" />
+          <NavigationProperty Name="CheckOuts" Relationship="NeoIMOSKModel.AlienCheckOut" FromRole="Alien" ToRole="CheckOut" />
+          <NavigationProperty Name="Passengers" Relationship="NeoIMOSKModel.AlienPassenger" FromRole="Alien" ToRole="Passenger" />
+          <NavigationProperty Name="AddRemoveCrews" Relationship="NeoIMOSKModel.AlienAddRemoveCrew" FromRole="Alien" ToRole="AddRemoveCrew" />
+          <NavigationProperty Name="PassportHistories" Relationship="NeoIMOSKModel.AlienPassportHistory" FromRole="Alien" ToRole="PassportHistory" />
+        </EntityType>
+        <ComplexType Name="Address">
+          <Property Type="String" Name="AddrNo" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Road" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Tumbol" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Amphur" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Province" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Phone" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Postcode" />
+        </ComplexType>
+        <ComplexType Name="ExtendedData">
+          <Property Type="String" Name="Custom1" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Custom2" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Custom3" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Custom4" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </ComplexType>
+        <ComplexType Name="IDDocument">
+          <Property Type="String" Name="DocNo" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="DateIssued" />
+          <Property Type="DateTime" Name="DateExpired" />
+          <Property Type="String" Name="IssuedFrom" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </ComplexType>
+        <ComplexType Name="LogInfo">
+          <Property Type="String" Name="AddedBy" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="AddedDate" />
+          <Property Type="String" Name="UpdatedBy" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="UpdatedDate" />
+        </ComplexType>
+        <ComplexType Name="PersonName">
+          <Property Type="String" Name="Title" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="FirstName" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="MiddleName" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="LastName" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </ComplexType>
+        <EntityType Name="VisaDetail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="AlienId" Nullable="false" />
+          <Property Type="String" Name="Code" MaxLength="50" Nullable="false" >
+            <Documentation>
+              <Summary>ลำดับที่</Summary>
+            </Documentation>
+          </Property>
+          <Property Type="DateTime" Name="RequestDate" Nullable="false" >
+            <Documentation>
+              <Summary>รับคำร้องวันที่</Summary>
+            </Documentation>
+          </Property>
+          <Property Type="DateTime" Name="ResultAppointmentDate" >
+            <Documentation>
+              <Summary>วันนัดฟังผล</Summary>
+            </Documentation>
+          </Property>
+          <Property Type="String" Name="StayType" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="StayPeriod" Nullable="false" MaxLength="50" >
+            <Documentation>
+              <Summary>ขออยู่ต่อจนถึงวันที่</Summary>
+            </Documentation>
+          </Property>
+          <Property Type="String" Name="StayReason" Nullable="false" MaxLength="50" >
+            <Documentation>
+              <Summary>เหตุผลที่ขอ</Summary>
+            </Documentation>
+          </Property>
+          <Property Type="String" Name="StayReasonDetail" >
+            <Documentation>
+              <Summary>เหตุผลย่อย (ขออยู่ต่อ)</Summary>
+            </Documentation>
+          </Property>
+          <Property Name="PassportCard" Type="NeoIMOSKModel.IDDocument" Nullable="false" />
+          <Property Type="DateTime" Name="DateArrive" Nullable="true" />
+          <Property Type="Boolean" Name="IsPermit" />
+          <Property Type="DateTime" Name="PermitToDate" />
+          <Property Name="Invoice" Type="NeoIMOSKModel.InvoiceInfo" Nullable="false" />
+          <Property Name="CurrentAddress" Type="NeoIMOSKModel.Address" Nullable="false" />
+          <Property Type="Boolean" Name="IsCancel" DefaultValue="false" Nullable="false" />
+          <Property Name="UpdateInfo" Type="NeoIMOSKModel.LogInfo" Nullable="false" />
+          <Property Name="ExtendedData" Type="NeoIMOSKModel.ExtendedData" Nullable="false" />
+          <NavigationProperty Name="Alien" Relationship="NeoIMOSKModel.AlienVisaDetail" FromRole="VisaDetail" ToRole="Alien" />
+          </EntityType>
+        <ComplexType Name="InvoiceInfo" >
+          <Property Type="String" Name="InvoiceNo" MaxLength="50" >
+            <Documentation>
+              <Summary>เลขที่ใบเสร็จ</Summary>
+            </Documentation>
+          </Property>
+          <Property Type="Decimal" Name="Charge" >
+            <Documentation>
+              <Summary>จำนวนเงิน</Summary>
+            </Documentation>
+          </Property>
+        </ComplexType>
+        <EntityType Name="ReEntry">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="AlienId" Nullable="false" />
+          <Property Type="String" Name="Code" MaxLength="50" Nullable="false" />
+          <Property Type="DateTime" Name="RequestDate" Nullable="false" />
+          <Property Name="PassportCard" Type="NeoIMOSKModel.IDDocument" Nullable="false" >
+            <Documentation>
+              <Summary>เลขที่ Passport</Summary>
+            </Documentation>
+          </Property>
+          <Property Type="String" Name="ReEntryCode" Nullable="false" />
+          <Property Type="String" Name="SMTime" Nullable="false" />
+          <Property Name="Invoice" Type="NeoIMOSKModel.InvoiceInfo" Nullable="false" />
+          <Property Type="DateTime" Name="PermitToDate" />
+          <Property Type="Boolean" Name="IsCancel" DefaultValue="false" Nullable="false" />
+          <Property Name="UpdateInfo" Type="NeoIMOSKModel.LogInfo" Nullable="false" />
+          <Property Name="ExtendedData" Type="NeoIMOSKModel.ExtendedData" Nullable="false" />
+          <NavigationProperty Name="Alien" Relationship="NeoIMOSKModel.AlienReEntryDetail" FromRole="ReEntryDetail" ToRole="Alien" />
+          </EntityType>
+        <EntityType Name="Staying90Day">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="AlienId" Nullable="false" />
+          <Property Type="String" Name="Code" Nullable="false" MaxLength="50" />
+          <Property Type="DateTime" Name="RequestDate" Nullable="false" />
+          <Property Type="DateTime" Name="ArrivalDate" />
+          <Property Type="String" Name="ArrivalBy" />
+          <Property Type="Int32" Name="VisaType" />
+          <Property Name="PassportCard" Type="NeoIMOSKModel.IDDocument" Nullable="false" />
+          <Property Name="ArrivalCard" Type="NeoIMOSKModel.IDDocument" Nullable="false" />
+          <Property Name="CurrentAddress" Type="NeoIMOSKModel.Address" Nullable="false" />
+          <Property Name="Invoice" Type="NeoIMOSKModel.InvoiceInfo" Nullable="false" />
+          <Property Type="Boolean" Name="IsCancel" DefaultValue="false" Nullable="false" />
+          <Property Name="UpdateInfo" Type="NeoIMOSKModel.LogInfo" Nullable="false" />
+          <Property Name="ExtendedData" Type="NeoIMOSKModel.ExtendedData" Nullable="false" />
+          <NavigationProperty Name="Alien" Relationship="NeoIMOSKModel.AlienStaying90Day" FromRole="Staying90Day" ToRole="Alien" />
+          </EntityType>
+        <Association Name="AlienVisaDetail">
+          <End Type="NeoIMOSKModel.Alien" Role="Alien" Multiplicity="1" />
+          <End Type="NeoIMOSKModel.VisaDetail" Role="VisaDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Alien">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="VisaDetail">
+              <PropertyRef Name="AlienId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="AlienReEntryDetail">
+          <End Type="NeoIMOSKModel.Alien" Role="Alien" Multiplicity="1" />
+          <End Type="NeoIMOSKModel.ReEntry" Role="ReEntryDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Alien">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ReEntryDetail">
+              <PropertyRef Name="AlienId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="AlienStaying90Day">
+          <End Type="NeoIMOSKModel.Alien" Role="Alien" Multiplicity="1" />
+          <End Type="NeoIMOSKModel.Staying90Day" Role="Staying90Day" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Alien">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Staying90Day">
+              <PropertyRef Name="AlienId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Endorse">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Alien" Relationship="NeoIMOSKModel.AlienCheckOut" FromRole="CheckOut" ToRole="Alien" />
+          <Property Type="Int32" Name="AlienId" Nullable="false" />
+          <Property Type="String" Name="Code" MaxLength="50" Nullable="false" />
+          <Property Type="String" Name="TMType" Nullable="false" />
+          <Property Name="HabitatCard" Type="NeoIMOSKModel.IDDocument" Nullable="false" />
+          <Property Name="PassportCard" Type="NeoIMOSKModel.IDDocument" Nullable="false" />
+          <Property Name="OutDetail" Type="NeoIMOSKModel.OutDetail" Nullable="false" />
+          <Property Type="DateTime" Name="RequestDate" Nullable="false" >
+            <Documentation>
+              <Summary>สลักหลังเมื่อ</Summary>
+            </Documentation>
+          </Property>
+          <Property Type="DateTime" Name="ExpiredDate" />
+          <Property Name="Invoice" Type="NeoIMOSKModel.InvoiceInfo" Nullable="false" />
+          <Property Name="CurrentAddress" Type="NeoIMOSKModel.Address" Nullable="false" />
+          <Property Type="String" Name="Remark" />
+          <Property Type="Boolean" Name="IsCancel" DefaultValue="false" Nullable="false" />
+          <Property Name="UpdateInfo" Type="NeoIMOSKModel.LogInfo" Nullable="false" />
+          <Property Name="ExtendedData" Type="NeoIMOSKModel.ExtendedData" Nullable="false" />
+          <NavigationProperty Name="EndorseStamps" Relationship="NeoIMOSKModel.EndorseEndorseStamp" FromRole="Endorse" ToRole="EndorseStamp" />
+        </EntityType>
+        <Association Name="AlienCheckOut">
+          <End Type="NeoIMOSKModel.Alien" Role="Alien" Multiplicity="1" />
+          <End Type="NeoIMOSKModel.Endorse" Role="CheckOut" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Alien">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CheckOut">
+              <PropertyRef Name="AlienId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="OutDetail">
+          <Property Type="String" Name="Destination" />
+          <Property Type="String" Name="ByVehicle" />
+          <Property Type="DateTime" Name="OutDate" />
+        </ComplexType>
+        <EntityType Name="zz_Environ">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="OfficeName" Nullable="false" />
+          <Property Name="OfficeAddress" Type="NeoIMOSKModel.Address" Nullable="false" />
+          <Property Name="UpdateInfo" Type="NeoIMOSKModel.LogInfo" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Conveyance">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" MaxLength="200" >
+            <Documentation>
+              <Summary>ชื่อเรือ</Summary>
+            </Documentation>
+          </Property>
+          <Property Type="String" Name="RegistrationNo" MaxLength="200" />
+          <Property Type="String" Name="OwnerName" MaxLength="200" />
+          <NavigationProperty Name="ConveyanceInOuts" Relationship="NeoIMOSKModel.ConveyanceConveyancenOut" FromRole="Conveyance" ToRole="ConveyancenOut" />
+          <Property Type="Boolean" Name="IsCancel" DefaultValue="false" Nullable="false" />
+          <Property Name="UpdateInfo" Type="NeoIMOSKModel.LogInfo" Nullable="false" />
+          <Property Name="ExtendedData" Type="NeoIMOSKModel.ExtendedData" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ConveyanceInOut">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Code" Nullable="false" MaxLength="50" />
+          <NavigationProperty Name="Conveyance" Relationship="NeoIMOSKModel.ConveyanceConveyancenOut" FromRole="ConveyancenOut" ToRole="Conveyance" />
+          <Property Type="Int32" Name="ConveyanceId" Nullable="false" />
+          <Property Type="String" Name="InOutType" Nullable="false" />
+          <Property Type="DateTime" Name="RequestDate" Nullable="false" />
+          <Property Type="DateTime" Name="InOutDate" Nullable="false" />
+          <Property Type="DateTime" Name="InOutTime" />
+          <Property Name="PortInFrom" Type="NeoIMOSKModel.PortDetail" Nullable="false" />
+          <Property Name="PortInTo" Type="NeoIMOSKModel.PortDetail" Nullable="false" />
+          <Property Name="PortOutFrom" Type="NeoIMOSKModel.PortDetail" Nullable="false" />
+          <Property Name="PortOutTo" Type="NeoIMOSKModel.PortDetail" Nullable="false" />
+          <Property Type="Int32" Name="NumCrew" Nullable="true" />
+          <Property Type="Int32" Name="NumPassenger" Nullable="true" />
+          <Property Type="String" Name="AgencyName" />
+          <Property Type="String" Name="InspectOfficer" />
+          <Property Name="Invoice" Type="NeoIMOSKModel.InvoiceInfo" Nullable="false" />
+          <Property Type="Boolean" Name="IsCancel" DefaultValue="false" Nullable="false" />
+          <Property Name="UpdateInfo" Type="NeoIMOSKModel.LogInfo" Nullable="false" />
+          <Property Name="ExtendedData" Type="NeoIMOSKModel.ExtendedData" Nullable="false" />
+          <NavigationProperty Name="Passengers" Relationship="NeoIMOSKModel.ConveyanceInOutPassenger" FromRole="ConveyanceInOut" ToRole="Passenger" />
+          <NavigationProperty Name="AddRemoveCrews" Relationship="NeoIMOSKModel.ConveyanceInOutAddRemoveCrew" FromRole="ConveyanceInOut" ToRole="AddRemoveCrew" />
+        </EntityType>
+        <Association Name="ConveyanceConveyancenOut">
+          <End Type="NeoIMOSKModel.Conveyance" Role="Conveyance" Multiplicity="1" />
+          <End Type="NeoIMOSKModel.ConveyanceInOut" Role="ConveyancenOut" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Conveyance">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ConveyancenOut">
+              <PropertyRef Name="ConveyanceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="PortDetail" >
+          <Property Type="String" Name="PortName" />
+          <Property Type="String" Name="Country" />
+        </ComplexType>
+        <EntityType Name="Crew">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="ConveyanceInOut" Relationship="NeoIMOSKModel.ConveyanceInOutPassenger" FromRole="Passenger" ToRole="ConveyanceInOut" />
+          <Property Type="Int32" Name="ConveyanceInOutId" Nullable="false" />
+          <NavigationProperty Name="Alien" Relationship="NeoIMOSKModel.AlienPassenger" FromRole="Passenger" ToRole="Alien" />
+          <Property Type="Int32" Name="AlienId" Nullable="false" />
+          <Property Type="Boolean" Name="IsCrew" />
+          <Property Type="String" Name="Code" MaxLength="50" Nullable="false" />
+          <Property Name="PassportCard" Type="NeoIMOSKModel.IDDocument" Nullable="false" />
+          <Property Type="String" Name="IDCardNo" MaxLength="Max" />
+          <Property Type="String" Name="SeamanCardNo" MaxLength="Max" />
+          <Property Type="String" Name="Remark" />
+          <Property Type="Boolean" Name="IsCancel" DefaultValue="false" Nullable="false" />
+          <Property Name="UpdateInfo" Type="NeoIMOSKModel.LogInfo" Nullable="false" />
+          <Property Name="ExtendedData" Type="NeoIMOSKModel.ExtendedData" Nullable="false" />
+          </EntityType>
+        <Association Name="ConveyanceInOutPassenger">
+          <End Type="NeoIMOSKModel.ConveyanceInOut" Role="ConveyanceInOut" Multiplicity="1" />
+          <End Type="NeoIMOSKModel.Crew" Role="Passenger" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ConveyanceInOut">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Passenger">
+              <PropertyRef Name="ConveyanceInOutId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="AlienPassenger">
+          <End Type="NeoIMOSKModel.Alien" Role="Alien" Multiplicity="1" />
+          <End Type="NeoIMOSKModel.Crew" Role="Passenger" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Alien">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Passenger">
+              <PropertyRef Name="AlienId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="zz_Reference">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="RefTypeId" Nullable="false" />
+          <Property Type="String" Name="Code" MaxLength="50" Nullable="false" />
+          <Property Type="String" Name="RefName" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="RefDesc" MaxLength="250" FixedLength="false" Unicode="true" >
+            <Documentation>
+              <Summary>คำอธิบาย</Summary>
+              <LongDescription>คำอธิบายรายละเอียด</LongDescription>
+            </Documentation>
+          </Property>
+          <Property Type="Int32" Name="RefRefTypeId" />
+          <Property Type="String" Name="RefCode" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="IsCancel" DefaultValue="false" Nullable="false" />
+          <Property Name="UpdateInfo" Type="NeoIMOSKModel.LogInfo" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EndorseStamp">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="EndorseId" Nullable="false" />
+          <Property Type="String" Name="Code" MaxLength="50" Nullable="false" />
+          <Property Type="DateTime" Name="StampDate" Nullable="false" />
+          <Property Type="DateTime" Name="StampExpiredDate" />
+          <Property Name="Invoice" Type="NeoIMOSKModel.InvoiceInfo" Nullable="false" />
+          <Property Type="String" Name="SMTime" Nullable="false" />
+          <Property Type="Boolean" Name="IsCancel" DefaultValue="false" Nullable="false" />
+          <Property Name="UpdateInfo" Type="NeoIMOSKModel.LogInfo" Nullable="false" />
+          <Property Name="ExtendedData" Type="NeoIMOSKModel.ExtendedData" Nullable="false" />
+          <NavigationProperty Name="Endorse" Relationship="NeoIMOSKModel.EndorseEndorseStamp" FromRole="EndorseStamp" ToRole="Endorse" />
+        </EntityType>
+        <Association Name="EndorseEndorseStamp">
+          <End Type="NeoIMOSKModel.Endorse" Role="Endorse" Multiplicity="1" />
+          <End Type="NeoIMOSKModel.EndorseStamp" Role="EndorseStamp" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Endorse">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EndorseStamp">
+              <PropertyRef Name="EndorseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="AddRemoveCrew">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="AlienId" Nullable="false" />
+          <Property Type="Int32" Name="ConveyanceInOutId" Nullable="true" />
+          <Property Type="Int32" Name="AddRemoveType" Nullable="false" />
+          <Property Type="String" Name="Code" MaxLength="50" Nullable="false" />
+          <Property Type="String" Name="SubCode" />
+          <Property Type="DateTime" Name="RequestDate" Nullable="false" />
+          <Property Type="String" Name="Company" />
+          <Property Name="InDetail" Type="NeoIMOSKModel.CrewInOut" Nullable="false" />
+          <Property Name="OutDetail" Type="NeoIMOSKModel.CrewInOut" Nullable="false" />
+          <Property Name="Invoice" Type="NeoIMOSKModel.InvoiceInfo" Nullable="false" />
+          <Property Type="Boolean" Name="IsCancel" DefaultValue="false" Nullable="false" />
+          <Property Name="UpdateInfo" Type="NeoIMOSKModel.LogInfo" Nullable="false" />
+          <Property Name="ExtendedData" Type="NeoIMOSKModel.ExtendedData" Nullable="false" />
+          <NavigationProperty Name="Alien" Relationship="NeoIMOSKModel.AlienAddRemoveCrew" FromRole="AddRemoveCrew" ToRole="Alien" />
+          <NavigationProperty Name="ConveyanceInOut" Relationship="NeoIMOSKModel.ConveyanceInOutAddRemoveCrew" FromRole="AddRemoveCrew" ToRole="ConveyanceInOut" />
+        </EntityType>
+        <Association Name="AlienAddRemoveCrew">
+          <End Type="NeoIMOSKModel.Alien" Role="Alien" Multiplicity="1" />
+          <End Type="NeoIMOSKModel.AddRemoveCrew" Role="AddRemoveCrew" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Alien">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AddRemoveCrew">
+              <PropertyRef Name="AlienId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="CrewInOut">
+          <Property Type="DateTime" Name="InDate" />
+          <Property Type="String" Name="InMethod" />
+          <Property Type="String" Name="InWay" />
+        </ComplexType>
+        <EntityType Name="PassportHistory">
+          <Documentation>
+            <Summary>เก็บ passport และใบถิ่นที่อยู่ เก่า</Summary>
+          </Documentation>
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Boolean" Name="IsPassport" Nullable="false" DefaultValue="true" />
+          <NavigationProperty Name="Alien" Relationship="NeoIMOSKModel.AlienPassportHistory" FromRole="PassportHistory" ToRole="Alien" />
+          <Property Type="Int32" Name="AlienId" Nullable="false" />
+          <Property Name="PassportCard" Type="NeoIMOSKModel.IDDocument" Nullable="false" />
+          <Property Type="Boolean" Name="IsCancel" DefaultValue="false" Nullable="false" />
+          <Property Name="UpdateInfo" Type="NeoIMOSKModel.LogInfo" Nullable="false" />
+          <Property Name="ExtendedData" Type="NeoIMOSKModel.ExtendedData" Nullable="false" />
+        </EntityType>
+        <Association Name="AlienPassportHistory">
+          <End Type="NeoIMOSKModel.Alien" Role="Alien" Multiplicity="1" >
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="NeoIMOSKModel.PassportHistory" Role="PassportHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Alien">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PassportHistory">
+              <PropertyRef Name="AlienId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="PhotoImage">
+          <Property Type="Binary" Name="FPicture" />
+          <Property Type="String" Name="ContentType" />
+        </ComplexType>
+        <Association Name="ConveyanceInOutAddRemoveCrew">
+          <End Type="NeoIMOSKModel.ConveyanceInOut" Role="ConveyanceInOut" Multiplicity="0..1" />
+          <End Type="NeoIMOSKModel.AddRemoveCrew" Role="AddRemoveCrew" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ConveyanceInOut">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AddRemoveCrew">
+              <PropertyRef Name="ConveyanceInOutId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="NeoIMOSKModelStoreContainer" CdmEntityContainer="NeoIMOSKEntities">
+    <EntitySetMapping Name="VisaDetails">
+      <EntityTypeMapping TypeName="IsTypeOf(NeoIMOSKModel.VisaDetail)">
+        <MappingFragment StoreEntitySet="VisaDetails">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="AlienId" ColumnName="AlienId" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="RequestDate" ColumnName="RequestDate" />
+          <ScalarProperty Name="ResultAppointmentDate" ColumnName="ResultAppointmentDate" />
+          <ScalarProperty Name="StayType" ColumnName="StayType" />
+          <ScalarProperty Name="StayPeriod" ColumnName="StayPeriod" />
+          <ScalarProperty Name="StayReason" ColumnName="StayReason" />
+          <ScalarProperty Name="StayReasonDetail" ColumnName="StayReasonDetail" />
+          <ComplexProperty Name="PassportCard" TypeName="NeoIMOSKModel.IDDocument">
+            <ScalarProperty Name="DocNo" ColumnName="PassportCard_DocNo" />
+            <ScalarProperty Name="DateIssued" ColumnName="PassportCard_DateIssued" />
+            <ScalarProperty Name="DateExpired" ColumnName="PassportCard_DateExpired" />
+            <ScalarProperty Name="IssuedFrom" ColumnName="PassportCard_IssuedFrom" />
+          </ComplexProperty>
+          <ScalarProperty Name="DateArrive" ColumnName="DateArrive" />
+          <ScalarProperty Name="IsPermit" ColumnName="IsPermit" />
+          <ScalarProperty Name="PermitToDate" ColumnName="PermitToDate" />
+          <ComplexProperty Name="Invoice" TypeName="NeoIMOSKModel.InvoiceInfo">
+            <ScalarProperty Name="InvoiceNo" ColumnName="Invoice_InvoiceNo" />
+            <ScalarProperty Name="Charge" ColumnName="Invoice_Charge" />
+          </ComplexProperty>
+          <ComplexProperty Name="CurrentAddress" TypeName="NeoIMOSKModel.Address">
+            <ScalarProperty Name="AddrNo" ColumnName="CurrentAddress_AddrNo" />
+            <ScalarProperty Name="Road" ColumnName="CurrentAddress_Road" />
+            <ScalarProperty Name="Tumbol" ColumnName="CurrentAddress_Tumbol" />
+            <ScalarProperty Name="Amphur" ColumnName="CurrentAddress_Amphur" />
+            <ScalarProperty Name="Province" ColumnName="CurrentAddress_Province" />
+            <ScalarProperty Name="Phone" ColumnName="CurrentAddress_Phone" />
+            <ScalarProperty Name="Postcode" ColumnName="CurrentAddress_Postcode" />
+          </ComplexProperty>
+          <ScalarProperty Name="IsCancel" ColumnName="IsCancel" />
+          <ComplexProperty Name="UpdateInfo" TypeName="NeoIMOSKModel.LogInfo">
+            <ScalarProperty Name="AddedBy" ColumnName="UpdateInfo_AddedBy" />
+            <ScalarProperty Name="AddedDate" ColumnName="UpdateInfo_AddedDate" />
+            <ScalarProperty Name="UpdatedBy" ColumnName="UpdateInfo_UpdatedBy" />
+            <ScalarProperty Name="UpdatedDate" ColumnName="UpdateInfo_UpdatedDate" />
+          </ComplexProperty>
+          <ComplexProperty Name="ExtendedData" TypeName="NeoIMOSKModel.ExtendedData">
+            <ScalarProperty Name="Custom1" ColumnName="ExtendedData_Custom1" />
+            <ScalarProperty Name="Custom2" ColumnName="ExtendedData_Custom2" />
+            <ScalarProperty Name="Custom3" ColumnName="ExtendedData_Custom3" />
+            <ScalarProperty Name="Custom4" ColumnName="ExtendedData_Custom4" />
+          </ComplexProperty>
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ReEntrys">
+      <EntityTypeMapping TypeName="IsTypeOf(NeoIMOSKModel.ReEntry)">
+        <MappingFragment StoreEntitySet="ReEntrys">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="AlienId" ColumnName="AlienId" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="RequestDate" ColumnName="RequestDate" />
+          <ComplexProperty Name="PassportCard" TypeName="NeoIMOSKModel.IDDocument">
+            <ScalarProperty Name="DocNo" ColumnName="PassportCard_DocNo" />
+            <ScalarProperty Name="DateIssued" ColumnName="PassportCard_DateIssued" />
+            <ScalarProperty Name="DateExpired" ColumnName="PassportCard_DateExpired" />
+            <ScalarProperty Name="IssuedFrom" ColumnName="PassportCard_IssuedFrom" />
+          </ComplexProperty>
+          <ScalarProperty Name="ReEntryCode" ColumnName="ReEntryCode" />
+          <ScalarProperty Name="SMTime" ColumnName="SMTime" />
+          <ComplexProperty Name="Invoice" TypeName="NeoIMOSKModel.InvoiceInfo">
+            <ScalarProperty Name="InvoiceNo" ColumnName="Invoice_InvoiceNo" />
+            <ScalarProperty Name="Charge" ColumnName="Invoice_Charge" />
+          </ComplexProperty>
+          <ScalarProperty Name="PermitToDate" ColumnName="PermitToDate" />
+          <ScalarProperty Name="IsCancel" ColumnName="IsCancel" />
+          <ComplexProperty Name="UpdateInfo" TypeName="NeoIMOSKModel.LogInfo">
+            <ScalarProperty Name="AddedBy" ColumnName="UpdateInfo_AddedBy" />
+            <ScalarProperty Name="AddedDate" ColumnName="UpdateInfo_AddedDate" />
+            <ScalarProperty Name="UpdatedBy" ColumnName="UpdateInfo_UpdatedBy" />
+            <ScalarProperty Name="UpdatedDate" ColumnName="UpdateInfo_UpdatedDate" />
+          </ComplexProperty>
+          <ComplexProperty Name="ExtendedData" TypeName="NeoIMOSKModel.ExtendedData">
+            <ScalarProperty Name="Custom1" ColumnName="ExtendedData_Custom1" />
+            <ScalarProperty Name="Custom2" ColumnName="ExtendedData_Custom2" />
+            <ScalarProperty Name="Custom3" ColumnName="ExtendedData_Custom3" />
+            <ScalarProperty Name="Custom4" ColumnName="ExtendedData_Custom4" />
+          </ComplexProperty>
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Aliens">
+      <EntityTypeMapping TypeName="IsTypeOf(NeoIMOSKModel.Alien)">
+        <MappingFragment StoreEntitySet="Aliens">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ComplexProperty Name="Name" TypeName="NeoIMOSKModel.PersonName">
+            <ScalarProperty Name="Title" ColumnName="Name_Title" />
+            <ScalarProperty Name="FirstName" ColumnName="Name_FirstName" />
+            <ScalarProperty Name="MiddleName" ColumnName="Name_MiddleName" />
+            <ScalarProperty Name="LastName" ColumnName="Name_LastName" />
+          </ComplexProperty>
+          <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+          <ScalarProperty Name="IsThai" ColumnName="IsThai" />
+          <ScalarProperty Name="Nationality" ColumnName="Nationality" />
+          <ScalarProperty Name="Sex" ColumnName="Sex" />
+          <ScalarProperty Name="DataInType" ColumnName="DataInType" />
+          <ComplexProperty Name="CurrentAddress" TypeName="NeoIMOSKModel.Address">
+            <ScalarProperty Name="AddrNo" ColumnName="CurrentAddress_AddrNo" />
+            <ScalarProperty Name="Road" ColumnName="CurrentAddress_Road" />
+            <ScalarProperty Name="Tumbol" ColumnName="CurrentAddress_Tumbol" />
+            <ScalarProperty Name="Amphur" ColumnName="CurrentAddress_Amphur" />
+            <ScalarProperty Name="Province" ColumnName="CurrentAddress_Province" />
+            <ScalarProperty Name="Phone" ColumnName="CurrentAddress_Phone" />
+            <ScalarProperty Name="Postcode" ColumnName="CurrentAddress_Postcode" />
+          </ComplexProperty>
+          <ComplexProperty Name="PassportCard" TypeName="NeoIMOSKModel.IDDocument">
+            <ScalarProperty Name="DocNo" ColumnName="PassportCard_DocNo" />
+            <ScalarProperty Name="DateIssued" ColumnName="PassportCard_DateIssued" />
+            <ScalarProperty Name="DateExpired" ColumnName="PassportCard_DateExpired" />
+            <ScalarProperty Name="IssuedFrom" ColumnName="PassportCard_IssuedFrom" />
+          </ComplexProperty>
+          <ScalarProperty Name="IDCardNo" ColumnName="IDCardNo" />
+          <ScalarProperty Name="SeamanCardNo" ColumnName="SeamanCardNo" />
+          <ComplexProperty Name="HabitatCard" TypeName="NeoIMOSKModel.IDDocument">
+            <ScalarProperty Name="DocNo" ColumnName="HabitatCard_DocNo" />
+            <ScalarProperty Name="DateIssued" ColumnName="HabitatCard_DateIssued" />
+            <ScalarProperty Name="DateExpired" ColumnName="HabitatCard_DateExpired" />
+            <ScalarProperty Name="IssuedFrom" ColumnName="HabitatCard_IssuedFrom" />
+          </ComplexProperty>
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ComplexProperty Name="Photo" TypeName="NeoIMOSKModel.PhotoImage">
+            <ScalarProperty Name="FPicture" ColumnName="Photo_FPicture" />
+            <ScalarProperty Name="ContentType" ColumnName="Photo_ContentType" />
+          </ComplexProperty>
+          <ScalarProperty Name="IsCancel" ColumnName="IsCancel" />
+          <ComplexProperty Name="UpdateInfo" TypeName="NeoIMOSKModel.LogInfo">
+            <ScalarProperty Name="AddedBy" ColumnName="UpdateInfo_AddedBy" />
+            <ScalarProperty Name="AddedDate" ColumnName="UpdateInfo_AddedDate" />
+            <ScalarProperty Name="UpdatedBy" ColumnName="UpdateInfo_UpdatedBy" />
+            <ScalarProperty Name="UpdatedDate" ColumnName="UpdateInfo_UpdatedDate" />
+          </ComplexProperty>
+          <ComplexProperty Name="ExtendedData" TypeName="NeoIMOSKModel.ExtendedData">
+            <ScalarProperty Name="Custom1" ColumnName="ExtendedData_Custom1" />
+            <ScalarProperty Name="Custom2" ColumnName="ExtendedData_Custom2" />
+            <ScalarProperty Name="Custom3" ColumnName="ExtendedData_Custom3" />
+            <ScalarProperty Name="Custom4" ColumnName="ExtendedData_Custom4" />
+          </ComplexProperty>
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Staying90Days">
+      <EntityTypeMapping TypeName="IsTypeOf(NeoIMOSKModel.Staying90Day)">
+        <MappingFragment StoreEntitySet="Staying90Days">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="AlienId" ColumnName="AlienId" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="RequestDate" ColumnName="RequestDate" />
+          <ScalarProperty Name="ArrivalDate" ColumnName="ArrivalDate" />
+          <ScalarProperty Name="ArrivalBy" ColumnName="ArrivalBy" />
+          <ScalarProperty Name="VisaType" ColumnName="VisaType" />
+          <ComplexProperty Name="PassportCard" TypeName="NeoIMOSKModel.IDDocument">
+            <ScalarProperty Name="DocNo" ColumnName="PassportCard_DocNo" />
+            <ScalarProperty Name="DateIssued" ColumnName="PassportCard_DateIssued" />
+            <ScalarProperty Name="DateExpired" ColumnName="PassportCard_DateExpired" />
+            <ScalarProperty Name="IssuedFrom" ColumnName="PassportCard_IssuedFrom" />
+          </ComplexProperty>
+          <ComplexProperty Name="ArrivalCard" TypeName="NeoIMOSKModel.IDDocument">
+            <ScalarProperty Name="DocNo" ColumnName="ArrivalCard_DocNo" />
+            <ScalarProperty Name="DateIssued" ColumnName="ArrivalCard_DateIssued" />
+            <ScalarProperty Name="DateExpired" ColumnName="ArrivalCard_DateExpired" />
+            <ScalarProperty Name="IssuedFrom" ColumnName="ArrivalCard_IssuedFrom" />
+          </ComplexProperty>
+          <ComplexProperty Name="CurrentAddress" TypeName="NeoIMOSKModel.Address">
+            <ScalarProperty Name="AddrNo" ColumnName="CurrentAddress_AddrNo" />
+            <ScalarProperty Name="Road" ColumnName="CurrentAddress_Road" />
+            <ScalarProperty Name="Tumbol" ColumnName="CurrentAddress_Tumbol" />
+            <ScalarProperty Name="Amphur" ColumnName="CurrentAddress_Amphur" />
+            <ScalarProperty Name="Province" ColumnName="CurrentAddress_Province" />
+            <ScalarProperty Name="Phone" ColumnName="CurrentAddress_Phone" />
+            <ScalarProperty Name="Postcode" ColumnName="CurrentAddress_Postcode" />
+          </ComplexProperty>
+          <ComplexProperty Name="Invoice" TypeName="NeoIMOSKModel.InvoiceInfo">
+            <ScalarProperty Name="InvoiceNo" ColumnName="Invoice_InvoiceNo" />
+            <ScalarProperty Name="Charge" ColumnName="Invoice_Charge" />
+          </ComplexProperty>
+          <ScalarProperty Name="IsCancel" ColumnName="IsCancel" />
+          <ComplexProperty Name="UpdateInfo" TypeName="NeoIMOSKModel.LogInfo">
+            <ScalarProperty Name="AddedBy" ColumnName="UpdateInfo_AddedBy" />
+            <ScalarProperty Name="AddedDate" ColumnName="UpdateInfo_AddedDate" />
+            <ScalarProperty Name="UpdatedBy" ColumnName="UpdateInfo_UpdatedBy" />
+            <ScalarProperty Name="UpdatedDate" ColumnName="UpdateInfo_UpdatedDate" />
+          </ComplexProperty>
+          <ComplexProperty Name="ExtendedData" TypeName="NeoIMOSKModel.ExtendedData">
+            <ScalarProperty Name="Custom1" ColumnName="ExtendedData_Custom1" />
+            <ScalarProperty Name="Custom2" ColumnName="ExtendedData_Custom2" />
+            <ScalarProperty Name="Custom3" ColumnName="ExtendedData_Custom3" />
+            <ScalarProperty Name="Custom4" ColumnName="ExtendedData_Custom4" />
+          </ComplexProperty>
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Endorses">
+      <EntityTypeMapping TypeName="IsTypeOf(NeoIMOSKModel.Endorse)">
+        <MappingFragment StoreEntitySet="Endorses">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="AlienId" ColumnName="AlienId" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="TMType" ColumnName="TMType" />
+          <ComplexProperty Name="HabitatCard" TypeName="NeoIMOSKModel.IDDocument">
+            <ScalarProperty Name="DocNo" ColumnName="HabitatCard_DocNo" />
+            <ScalarProperty Name="DateIssued" ColumnName="HabitatCard_DateIssued" />
+            <ScalarProperty Name="DateExpired" ColumnName="HabitatCard_DateExpired" />
+            <ScalarProperty Name="IssuedFrom" ColumnName="HabitatCard_IssuedFrom" />
+          </ComplexProperty>
+          <ComplexProperty Name="PassportCard" TypeName="NeoIMOSKModel.IDDocument">
+            <ScalarProperty Name="DocNo" ColumnName="PassportCard_DocNo" />
+            <ScalarProperty Name="DateIssued" ColumnName="PassportCard_DateIssued" />
+            <ScalarProperty Name="DateExpired" ColumnName="PassportCard_DateExpired" />
+            <ScalarProperty Name="IssuedFrom" ColumnName="PassportCard_IssuedFrom" />
+          </ComplexProperty>
+          <ComplexProperty Name="OutDetail" TypeName="NeoIMOSKModel.OutDetail">
+            <ScalarProperty Name="Destination" ColumnName="OutDetail_Destination" />
+            <ScalarProperty Name="ByVehicle" ColumnName="OutDetail_ByVehicle" />
+            <ScalarProperty Name="OutDate" ColumnName="OutDetail_OutDate" />
+          </ComplexProperty>
+          <ScalarProperty Name="RequestDate" ColumnName="RequestDate" />
+          <ScalarProperty Name="ExpiredDate" ColumnName="ExpiredDate" />
+          <ComplexProperty Name="Invoice" TypeName="NeoIMOSKModel.InvoiceInfo">
+            <ScalarProperty Name="InvoiceNo" ColumnName="Invoice_InvoiceNo" />
+            <ScalarProperty Name="Charge" ColumnName="Invoice_Charge" />
+          </ComplexProperty>
+          <ComplexProperty Name="CurrentAddress" TypeName="NeoIMOSKModel.Address">
+            <ScalarProperty Name="AddrNo" ColumnName="CurrentAddress_AddrNo" />
+            <ScalarProperty Name="Road" ColumnName="CurrentAddress_Road" />
+            <ScalarProperty Name="Tumbol" ColumnName="CurrentAddress_Tumbol" />
+            <ScalarProperty Name="Amphur" ColumnName="CurrentAddress_Amphur" />
+            <ScalarProperty Name="Province" ColumnName="CurrentAddress_Province" />
+            <ScalarProperty Name="Phone" ColumnName="CurrentAddress_Phone" />
+            <ScalarProperty Name="Postcode" ColumnName="CurrentAddress_Postcode" />
+          </ComplexProperty>
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="IsCancel" ColumnName="IsCancel" />
+          <ComplexProperty Name="UpdateInfo" TypeName="NeoIMOSKModel.LogInfo">
+            <ScalarProperty Name="AddedBy" ColumnName="UpdateInfo_AddedBy" />
+            <ScalarProperty Name="AddedDate" ColumnName="UpdateInfo_AddedDate" />
+            <ScalarProperty Name="UpdatedBy" ColumnName="UpdateInfo_UpdatedBy" />
+            <ScalarProperty Name="UpdatedDate" ColumnName="UpdateInfo_UpdatedDate" />
+          </ComplexProperty>
+          <ComplexProperty Name="ExtendedData" TypeName="NeoIMOSKModel.ExtendedData">
+            <ScalarProperty Name="Custom1" ColumnName="ExtendedData_Custom1" />
+            <ScalarProperty Name="Custom2" ColumnName="ExtendedData_Custom2" />
+            <ScalarProperty Name="Custom3" ColumnName="ExtendedData_Custom3" />
+            <ScalarProperty Name="Custom4" ColumnName="ExtendedData_Custom4" />
+          </ComplexProperty>
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="zz_Environs">
+      <EntityTypeMapping TypeName="IsTypeOf(NeoIMOSKModel.zz_Environ)">
+        <MappingFragment StoreEntitySet="zz_Environs">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="OfficeName" ColumnName="OfficeName" />
+          <ComplexProperty Name="OfficeAddress" TypeName="NeoIMOSKModel.Address">
+            <ScalarProperty Name="AddrNo" ColumnName="OfficeAddress_AddrNo" />
+            <ScalarProperty Name="Road" ColumnName="OfficeAddress_Road" />
+            <ScalarProperty Name="Tumbol" ColumnName="OfficeAddress_Tumbol" />
+            <ScalarProperty Name="Amphur" ColumnName="OfficeAddress_Amphur" />
+            <ScalarProperty Name="Province" ColumnName="OfficeAddress_Province" />
+            <ScalarProperty Name="Phone" ColumnName="OfficeAddress_Phone" />
+            <ScalarProperty Name="Postcode" ColumnName="OfficeAddress_Postcode" />
+          </ComplexProperty>
+          <ComplexProperty Name="UpdateInfo" TypeName="NeoIMOSKModel.LogInfo">
+            <ScalarProperty Name="AddedBy" ColumnName="UpdateInfo_AddedBy" />
+            <ScalarProperty Name="AddedDate" ColumnName="UpdateInfo_AddedDate" />
+            <ScalarProperty Name="UpdatedBy" ColumnName="UpdateInfo_UpdatedBy" />
+            <ScalarProperty Name="UpdatedDate" ColumnName="UpdateInfo_UpdatedDate" />
+          </ComplexProperty>
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Conveyances">
+      <EntityTypeMapping TypeName="IsTypeOf(NeoIMOSKModel.Conveyance)">
+        <MappingFragment StoreEntitySet="Conveyances">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="RegistrationNo" ColumnName="RegistrationNo" />
+          <ScalarProperty Name="OwnerName" ColumnName="OwnerName" />
+          <ScalarProperty Name="IsCancel" ColumnName="IsCancel" />
+          <ComplexProperty Name="UpdateInfo" TypeName="NeoIMOSKModel.LogInfo">
+            <ScalarProperty Name="AddedBy" ColumnName="UpdateInfo_AddedBy" />
+            <ScalarProperty Name="AddedDate" ColumnName="UpdateInfo_AddedDate" />
+            <ScalarProperty Name="UpdatedBy" ColumnName="UpdateInfo_UpdatedBy" />
+            <ScalarProperty Name="UpdatedDate" ColumnName="UpdateInfo_UpdatedDate" />
+          </ComplexProperty>
+          <ComplexProperty Name="ExtendedData" TypeName="NeoIMOSKModel.ExtendedData">
+            <ScalarProperty Name="Custom1" ColumnName="ExtendedData_Custom1" />
+            <ScalarProperty Name="Custom2" ColumnName="ExtendedData_Custom2" />
+            <ScalarProperty Name="Custom3" ColumnName="ExtendedData_Custom3" />
+            <ScalarProperty Name="Custom4" ColumnName="ExtendedData_Custom4" />
+          </ComplexProperty>
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ConveyanceInOuts">
+      <EntityTypeMapping TypeName="IsTypeOf(NeoIMOSKModel.ConveyanceInOut)">
+        <MappingFragment StoreEntitySet="ConveyanceInOuts">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="ConveyanceId" ColumnName="ConveyanceId" />
+          <ScalarProperty Name="InOutType" ColumnName="InOutType" />
+          <ScalarProperty Name="RequestDate" ColumnName="RequestDate" />
+          <ScalarProperty Name="InOutDate" ColumnName="InOutDate" />
+          <ScalarProperty Name="InOutTime" ColumnName="InOutTime" />
+          <ComplexProperty Name="PortInFrom" TypeName="NeoIMOSKModel.PortDetail">
+            <ScalarProperty Name="PortName" ColumnName="PortInFrom_PortName" />
+            <ScalarProperty Name="Country" ColumnName="PortInFrom_Country" />
+          </ComplexProperty>
+          <ComplexProperty Name="PortInTo" TypeName="NeoIMOSKModel.PortDetail">
+            <ScalarProperty Name="PortName" ColumnName="PortInTo_PortName" />
+            <ScalarProperty Name="Country" ColumnName="PortInTo_Country" />
+          </ComplexProperty>
+          <ComplexProperty Name="PortOutFrom" TypeName="NeoIMOSKModel.PortDetail">
+            <ScalarProperty Name="PortName" ColumnName="PortOutFrom_PortName" />
+            <ScalarProperty Name="Country" ColumnName="PortOutFrom_Country" />
+          </ComplexProperty>
+          <ComplexProperty Name="PortOutTo" TypeName="NeoIMOSKModel.PortDetail">
+            <ScalarProperty Name="PortName" ColumnName="PortOutTo_PortName" />
+            <ScalarProperty Name="Country" ColumnName="PortOutTo_Country" />
+          </ComplexProperty>
+          <ScalarProperty Name="NumCrew" ColumnName="NumCrew" />
+          <ScalarProperty Name="NumPassenger" ColumnName="NumPassenger" />
+          <ScalarProperty Name="AgencyName" ColumnName="AgencyName" />
+          <ScalarProperty Name="InspectOfficer" ColumnName="InspectOfficer" />
+          <ComplexProperty Name="Invoice" TypeName="NeoIMOSKModel.InvoiceInfo">
+            <ScalarProperty Name="InvoiceNo" ColumnName="Invoice_InvoiceNo" />
+            <ScalarProperty Name="Charge" ColumnName="Invoice_Charge" />
+          </ComplexProperty>
+          <ScalarProperty Name="IsCancel" ColumnName="IsCancel" />
+          <ComplexProperty Name="UpdateInfo" TypeName="NeoIMOSKModel.LogInfo">
+            <ScalarProperty Name="AddedBy" ColumnName="UpdateInfo_AddedBy" />
+            <ScalarProperty Name="AddedDate" ColumnName="UpdateInfo_AddedDate" />
+            <ScalarProperty Name="UpdatedBy" ColumnName="UpdateInfo_UpdatedBy" />
+            <ScalarProperty Name="UpdatedDate" ColumnName="UpdateInfo_UpdatedDate" />
+          </ComplexProperty>
+          <ComplexProperty Name="ExtendedData" TypeName="NeoIMOSKModel.ExtendedData">
+            <ScalarProperty Name="Custom1" ColumnName="ExtendedData_Custom1" />
+            <ScalarProperty Name="Custom2" ColumnName="ExtendedData_Custom2" />
+            <ScalarProperty Name="Custom3" ColumnName="ExtendedData_Custom3" />
+            <ScalarProperty Name="Custom4" ColumnName="ExtendedData_Custom4" />
+          </ComplexProperty>
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Crews">
+      <EntityTypeMapping TypeName="IsTypeOf(NeoIMOSKModel.Crew)">
+        <MappingFragment StoreEntitySet="Crews">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ConveyanceInOutId" ColumnName="ConveyanceInOutId" />
+          <ScalarProperty Name="AlienId" ColumnName="AlienId" />
+          <ScalarProperty Name="IsCrew" ColumnName="IsCrew" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ComplexProperty Name="PassportCard" TypeName="NeoIMOSKModel.IDDocument">
+            <ScalarProperty Name="DocNo" ColumnName="PassportCard_DocNo" />
+            <ScalarProperty Name="DateIssued" ColumnName="PassportCard_DateIssued" />
+            <ScalarProperty Name="DateExpired" ColumnName="PassportCard_DateExpired" />
+            <ScalarProperty Name="IssuedFrom" ColumnName="PassportCard_IssuedFrom" />
+          </ComplexProperty>
+          <ScalarProperty Name="IDCardNo" ColumnName="IDCardNo" />
+          <ScalarProperty Name="SeamanCardNo" ColumnName="SeamanCardNo" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="IsCancel" ColumnName="IsCancel" />
+          <ComplexProperty Name="UpdateInfo" TypeName="NeoIMOSKModel.LogInfo">
+            <ScalarProperty Name="AddedBy" ColumnName="UpdateInfo_AddedBy" />
+            <ScalarProperty Name="AddedDate" ColumnName="UpdateInfo_AddedDate" />
+            <ScalarProperty Name="UpdatedBy" ColumnName="UpdateInfo_UpdatedBy" />
+            <ScalarProperty Name="UpdatedDate" ColumnName="UpdateInfo_UpdatedDate" />
+          </ComplexProperty>
+          <ComplexProperty Name="ExtendedData" TypeName="NeoIMOSKModel.ExtendedData">
+            <ScalarProperty Name="Custom1" ColumnName="ExtendedData_Custom1" />
+            <ScalarProperty Name="Custom2" ColumnName="ExtendedData_Custom2" />
+            <ScalarProperty Name="Custom3" ColumnName="ExtendedData_Custom3" />
+            <ScalarProperty Name="Custom4" ColumnName="ExtendedData_Custom4" />
+          </ComplexProperty>
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="zz_References">
+      <EntityTypeMapping TypeName="IsTypeOf(NeoIMOSKModel.zz_Reference)">
+        <MappingFragment StoreEntitySet="zz_References">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="RefTypeId" ColumnName="RefTypeId" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="RefName" ColumnName="RefName" />
+          <ScalarProperty Name="RefDesc" ColumnName="RefDesc" />
+          <ScalarProperty Name="RefRefTypeId" ColumnName="RefRefTypeId" />
+          <ScalarProperty Name="RefCode" ColumnName="RefCode" />
+          <ScalarProperty Name="IsCancel" ColumnName="IsCancel" />
+          <ComplexProperty Name="UpdateInfo" TypeName="NeoIMOSKModel.LogInfo">
+            <ScalarProperty Name="AddedBy" ColumnName="UpdateInfo_AddedBy" />
+            <ScalarProperty Name="AddedDate" ColumnName="UpdateInfo_AddedDate" />
+            <ScalarProperty Name="UpdatedBy" ColumnName="UpdateInfo_UpdatedBy" />
+            <ScalarProperty Name="UpdatedDate" ColumnName="UpdateInfo_UpdatedDate" />
+          </ComplexProperty>
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EndorseStamps">
+      <EntityTypeMapping TypeName="IsTypeOf(NeoIMOSKModel.EndorseStamp)">
+        <MappingFragment StoreEntitySet="EndorseStamps">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="EndorseId" ColumnName="EndorseId" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="StampDate" ColumnName="StampDate" />
+          <ScalarProperty Name="StampExpiredDate" ColumnName="StampExpiredDate" />
+          <ComplexProperty Name="Invoice" TypeName="NeoIMOSKModel.InvoiceInfo">
+            <ScalarProperty Name="InvoiceNo" ColumnName="Invoice_InvoiceNo" />
+            <ScalarProperty Name="Charge" ColumnName="Invoice_Charge" />
+          </ComplexProperty>
+          <ScalarProperty Name="SMTime" ColumnName="SMTime" />
+          <ScalarProperty Name="IsCancel" ColumnName="IsCancel" />
+          <ComplexProperty Name="UpdateInfo" TypeName="NeoIMOSKModel.LogInfo">
+            <ScalarProperty Name="AddedBy" ColumnName="UpdateInfo_AddedBy" />
+            <ScalarProperty Name="AddedDate" ColumnName="UpdateInfo_AddedDate" />
+            <ScalarProperty Name="UpdatedBy" ColumnName="UpdateInfo_UpdatedBy" />
+            <ScalarProperty Name="UpdatedDate" ColumnName="UpdateInfo_UpdatedDate" />
+          </ComplexProperty>
+          <ComplexProperty Name="ExtendedData" TypeName="NeoIMOSKModel.ExtendedData">
+            <ScalarProperty Name="Custom1" ColumnName="ExtendedData_Custom1" />
+            <ScalarProperty Name="Custom2" ColumnName="ExtendedData_Custom2" />
+            <ScalarProperty Name="Custom3" ColumnName="ExtendedData_Custom3" />
+            <ScalarProperty Name="Custom4" ColumnName="ExtendedData_Custom4" />
+          </ComplexProperty>
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AddRemoveCrews">
+      <EntityTypeMapping TypeName="IsTypeOf(NeoIMOSKModel.AddRemoveCrew)">
+        <MappingFragment StoreEntitySet="AddRemoveCrews">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="AlienId" ColumnName="AlienId" />
+          <ScalarProperty Name="ConveyanceInOutId" ColumnName="ConveyanceInOutId" />
+          <ScalarProperty Name="AddRemoveType" ColumnName="AddRemoveType" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="SubCode" ColumnName="SubCode" />
+          <ScalarProperty Name="RequestDate" ColumnName="RequestDate" />
+          <ScalarProperty Name="Company" ColumnName="Company" />
+          <ComplexProperty Name="InDetail" TypeName="NeoIMOSKModel.CrewInOut">
+            <ScalarProperty Name="InDate" ColumnName="InDetail_InDate" />
+            <ScalarProperty Name="InMethod" ColumnName="InDetail_InMethod" />
+            <ScalarProperty Name="InWay" ColumnName="InDetail_InWay" />
+          </ComplexProperty>
+          <ComplexProperty Name="OutDetail" TypeName="NeoIMOSKModel.CrewInOut">
+            <ScalarProperty Name="InDate" ColumnName="OutDetail_InDate" />
+            <ScalarProperty Name="InMethod" ColumnName="OutDetail_InMethod" />
+            <ScalarProperty Name="InWay" ColumnName="OutDetail_InWay" />
+          </ComplexProperty>
+          <ComplexProperty Name="Invoice" TypeName="NeoIMOSKModel.InvoiceInfo">
+            <ScalarProperty Name="InvoiceNo" ColumnName="Invoice_InvoiceNo" />
+            <ScalarProperty Name="Charge" ColumnName="Invoice_Charge" />
+          </ComplexProperty>
+          <ScalarProperty Name="IsCancel" ColumnName="IsCancel" />
+          <ComplexProperty Name="UpdateInfo" TypeName="NeoIMOSKModel.LogInfo">
+            <ScalarProperty Name="AddedBy" ColumnName="UpdateInfo_AddedBy" />
+            <ScalarProperty Name="AddedDate" ColumnName="UpdateInfo_AddedDate" />
+            <ScalarProperty Name="UpdatedBy" ColumnName="UpdateInfo_UpdatedBy" />
+            <ScalarProperty Name="UpdatedDate" ColumnName="UpdateInfo_UpdatedDate" />
+          </ComplexProperty>
+          <ComplexProperty Name="ExtendedData" TypeName="NeoIMOSKModel.ExtendedData">
+            <ScalarProperty Name="Custom1" ColumnName="ExtendedData_Custom1" />
+            <ScalarProperty Name="Custom2" ColumnName="ExtendedData_Custom2" />
+            <ScalarProperty Name="Custom3" ColumnName="ExtendedData_Custom3" />
+            <ScalarProperty Name="Custom4" ColumnName="ExtendedData_Custom4" />
+          </ComplexProperty>
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PassportHistories">
+      <EntityTypeMapping TypeName="IsTypeOf(NeoIMOSKModel.PassportHistory)">
+        <MappingFragment StoreEntitySet="PassportHistories">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="IsPassport" ColumnName="IsPassport" />
+          <ScalarProperty Name="AlienId" ColumnName="AlienId" />
+          <ComplexProperty Name="PassportCard" TypeName="NeoIMOSKModel.IDDocument">
+            <ScalarProperty Name="DocNo" ColumnName="PassportCard_DocNo" />
+            <ScalarProperty Name="DateIssued" ColumnName="PassportCard_DateIssued" />
+            <ScalarProperty Name="DateExpired" ColumnName="PassportCard_DateExpired" />
+            <ScalarProperty Name="IssuedFrom" ColumnName="PassportCard_IssuedFrom" />
+          </ComplexProperty>
+          <ScalarProperty Name="IsCancel" ColumnName="IsCancel" />
+          <ComplexProperty Name="UpdateInfo" TypeName="NeoIMOSKModel.LogInfo">
+            <ScalarProperty Name="AddedBy" ColumnName="UpdateInfo_AddedBy" />
+            <ScalarProperty Name="AddedDate" ColumnName="UpdateInfo_AddedDate" />
+            <ScalarProperty Name="UpdatedBy" ColumnName="UpdateInfo_UpdatedBy" />
+            <ScalarProperty Name="UpdatedDate" ColumnName="UpdateInfo_UpdatedDate" />
+          </ComplexProperty>
+          <ComplexProperty Name="ExtendedData" TypeName="NeoIMOSKModel.ExtendedData">
+            <ScalarProperty Name="Custom1" ColumnName="ExtendedData_Custom1" />
+            <ScalarProperty Name="Custom2" ColumnName="ExtendedData_Custom2" />
+            <ScalarProperty Name="Custom3" ColumnName="ExtendedData_Custom3" />
+            <ScalarProperty Name="Custom4" ColumnName="ExtendedData_Custom4" />
+          </ComplexProperty>
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="NeoIMOSK" ZoomLevel="91">
+        <EntityTypeShape EntityType="NeoIMOSKModel.Alien" Width="1.5" PointX="0.75" PointY="15.75" Height="5.3687141927083317" IsExpanded="true" />
+        <EntityTypeShape EntityType="NeoIMOSKModel.VisaDetail" Width="1.5" PointX="3" PointY="33" Height="4.6107389322916674" />
+        <EntityTypeShape EntityType="NeoIMOSKModel.ReEntry" Width="1.5" PointX="3" PointY="28.75" Height="3.4737760416666639" />
+        <EntityTypeShape EntityType="NeoIMOSKModel.Staying90Day" Width="1.5" PointX="3" PointY="7.5" Height="3.8527636718749987" />
+        <AssociationConnector Association="NeoIMOSKModel.AlienVisaDetail">
+          <ConnectorPoint PointX="1.5" PointY="21.118714192708332" />
+          <ConnectorPoint PointX="1.5" PointY="35.305369466145834" />
+          <ConnectorPoint PointX="3" PointY="35.305369466145834" />
+        </AssociationConnector>
+        <AssociationConnector Association="NeoIMOSKModel.AlienReEntryDetail">
+          <ConnectorPoint PointX="1.835941875" PointY="21.118714192708332" />
+          <ConnectorPoint PointX="1.835941875" PointY="30.486888020833334" />
+          <ConnectorPoint PointX="3" PointY="30.486888020833334" />
+        </AssociationConnector>
+        <AssociationConnector Association="NeoIMOSKModel.AlienStaying90Day">
+          <ConnectorPoint PointX="1.5" PointY="15.75" />
+          <ConnectorPoint PointX="1.5" PointY="9.4263818359375" />
+          <ConnectorPoint PointX="3" PointY="9.4263818359375" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="NeoIMOSKModel.Endorse" Width="1.5" PointX="3" PointY="12.125" Height="4.2317513020833317" />
+        <AssociationConnector Association="NeoIMOSKModel.AlienCheckOut">
+          <ConnectorPoint PointX="2.25" PointY="16.053375651041666" />
+          <ConnectorPoint PointX="3" PointY="16.053375651041666" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="NeoIMOSKModel.zz_Environ" Width="1.5" PointX="5.75" PointY="1.625" Height="1.7683317057291674" />
+        <EntityTypeShape EntityType="NeoIMOSKModel.Conveyance" Width="1.5" PointX="1.5" PointY="2.125" Height="2.5263069661458317" />
+        <EntityTypeShape EntityType="NeoIMOSKModel.ConveyanceInOut" Width="1.5" PointX="3.75" PointY="0.75" Height="4.6107389322916656" />
+        <AssociationConnector Association="NeoIMOSKModel.ConveyanceConveyancenOut">
+          <ConnectorPoint PointX="3" PointY="3.3881534830729159" />
+          <ConnectorPoint PointX="3.75" PointY="3.3881534830729159" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="NeoIMOSKModel.Crew" Width="1.5" PointX="6" PointY="21.75" Height="3.284282226562496" />
+        <AssociationConnector Association="NeoIMOSKModel.ConveyanceInOutPassenger">
+          <ConnectorPoint PointX="4.7656240625000006" PointY="5.9292203776041656" />
+          <ConnectorPoint PointX="4.7656240625000006" PointY="24.69535525390625" />
+          <ConnectorPoint PointX="6" PointY="24.69535525390625" />
+        </AssociationConnector>
+        <AssociationConnector Association="NeoIMOSKModel.AlienPassenger">
+          <ConnectorPoint PointX="1.0937475" PointY="21.118714192708332" />
+          <ConnectorPoint PointX="1.0937475" PointY="24.360828610026044" />
+          <ConnectorPoint PointX="1.4166666666666667" PointY="24.360828610026044" />
+          <ConnectorPoint PointX="1.5833333333333333" PointY="24.360828610026044" />
+          <ConnectorPoint PointX="1.7526085416666668" PointY="24.360828610026044" />
+          <ConnectorPoint PointX="1.9192752083333333" PointY="24.360828610026044" />
+          <ConnectorPoint PointX="4.6822907291666676" PointY="24.360828610026044" />
+          <ConnectorPoint PointX="4.8489573958333336" PointY="24.360828610026044" />
+          <ConnectorPoint PointX="6" PointY="24.360828610026044" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="NeoIMOSKModel.zz_Reference" Width="1.5" PointX="5.75" PointY="4.625" Height="2.7158007812500014" />
+        <EntityTypeShape EntityType="NeoIMOSKModel.EndorseStamp" Width="1.5" PointX="5.25" PointY="12.625" Height="3.0947884114583317" />
+        <AssociationConnector Association="NeoIMOSKModel.EndorseEndorseStamp">
+          <ConnectorPoint PointX="4.5" PointY="14.172394205729166" />
+          <ConnectorPoint PointX="4.7291679166666674" PointY="14.172394205729166" />
+          <ConnectorPoint PointX="4.8958345833333334" PointY="14.172394205729166" />
+          <ConnectorPoint PointX="4.9479197916666671" PointY="14.172394205729166" />
+          <ConnectorPoint PointX="5.1145864583333331" PointY="14.172394205729166" />
+          <ConnectorPoint PointX="5.25" PointY="14.172394205729166" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="NeoIMOSKModel.AddRemoveCrew" Width="1.5" PointX="6" PointY="16.5" Height="3.473776041666671" />
+        <AssociationConnector Association="NeoIMOSKModel.AlienAddRemoveCrew">
+          <ConnectorPoint PointX="2.25" PointY="19.243357692591353" />
+          <ConnectorPoint PointX="4.6822907291666676" PointY="19.243357692591353" />
+          <ConnectorPoint PointX="4.8489573958333336" PointY="19.243357692591353" />
+          <ConnectorPoint PointX="6" PointY="19.243357692591353" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="NeoIMOSKModel.PassportHistory" Width="1.5" PointX="3" PointY="21.5" Height="2.5263069661458388" />
+        <AssociationConnector Association="NeoIMOSKModel.AlienPassportHistory">
+          <ConnectorPoint PointX="2.0742234375" PointY="21.118714192708332" />
+          <ConnectorPoint PointX="2.0742234375" PointY="22.763153483072919" />
+          <ConnectorPoint PointX="3" PointY="22.763153483072919" />
+        </AssociationConnector>
+        <AssociationConnector Association="NeoIMOSKModel.ConveyanceInOutAddRemoveCrew">
+          <ConnectorPoint PointX="5.031253125" PointY="5.9292203776041656" />
+          <ConnectorPoint PointX="5.031253125" PointY="17.735584105834967" />
+          <ConnectorPoint PointX="6" PointY="17.735584105834967" />
+        </AssociationConnector>
+        </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<siteMap>
+  <siteMapNode title="Home" controller="Home" action="Index">
+
+    <siteMapNode area="" controller="Home" action="Index" title="หน้าหลัก"/>
+    <siteMapNode title="เพิ่มข้อมูลคนต่างด้าว">
+      <siteMapNode area="Visa" controller="Visa" action="Insert" title="ขออยู่ต่อ (ต่อ Visa)"/>
+      <siteMapNode area="Visa" controller="ReEntry" action="Insert" title="Re-Entry"/>
+      <siteMapNode area="Visa" controller="Endorse" action="Insert" title="สลักหลังถิ่นที่อยู่"/>
+      <siteMapNode area="Visa" controller="Stay" action="Insert" title="รายงานตัว 90 วัน"/>
+    </siteMapNode>
+    <siteMapNode title="เพิ่มข้อมูลเรือ">
+      <siteMapNode area="ConveyanceArea" controller="Conveyance" action="Insert" title="บันทึกเรือเข้าออก"/>
+      <siteMapNode area="ConveyanceArea" controller="Crew" action="IncreaseCrew" title="เพิ่มคนประจำเรือ"/>
+      <siteMapNode area="ConveyanceArea" controller="Crew" action="DecreaseCrew" title="ลดคนประจำเรือ"/>
+    </siteMapNode>
+    <siteMapNode title="ค้นหาข้อมูล">
+      <siteMapNode area="AlienArea" controller="Alien" action="Index" title="ข้อมูลคนต่างด้าว"/>
+    </siteMapNode>
+
+  </siteMapNode>
+</siteMap>
